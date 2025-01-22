@@ -21,5 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Poekedex"
 include(":app")
-include(":features:onboarding")
 include(":features")
+include(":onboarding")
+include(":features:onboarding")
