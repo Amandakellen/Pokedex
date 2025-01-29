@@ -67,4 +67,5 @@ dependencies {
 
     //Project
     implementation(project(":features"))
+    implementation(project(":design_system"))
 }
