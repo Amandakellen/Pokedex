@@ -48,4 +48,7 @@ dependencies {
 
     //Project
     implementation(project(":features:onboarding"))
+
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.6.0")
 }
