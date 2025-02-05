@@ -1,17 +1,19 @@
 package com.example.design_system.ui.theme
 
 import android.app.Activity
-import android.graphics.Color
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -793,33 +795,91 @@ data class ColorFamily(
     val onColorContainer: androidx.compose.ui.graphics.Color
 )
 
+val LocalPokedexColorScheme = staticCompositionLocalOf<PokedexColorScheme> {
+    error("No PokedexColorScheme provided")
+}
+
+object PokedexTheme {
+    val colors: PokedexColorScheme
+        @Composable
+        get() = LocalPokedexColorScheme.current
+}
+
 @Composable
 fun PokedexTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> darkScheme
-        else -> lightScheme
+    // Escolha do esquema de cores baseado no tema
+    val colorScheme = if (darkTheme) {
+        PokedexColorScheme(
+            watterButton = extendedDark.watterButton,
+            allTypesButton = extendedDark.allTypesButton,
+            dragonButton = extendedDark.dragonButton,
+            eletricButton = extendedDark.eletricButton,
+            fairyButton = extendedDark.fairyButton,
+            ghostButton = extendedDark.ghostButton,
+            fireButton = extendedDark.fireButton,
+            iceButton = extendedDark.iceButton,
+            grassButton = extendedDark.grassButton,
+            bugButton = extendedDark.bugButton,
+            fightingButton = extendedDark.fightingButton,
+            normalButton = extendedDark.normalButton,
+            darkButton = extendedDark.darkButton,
+            customColor1 = extendedDark.customColor1
+        )
+    } else {
+        PokedexColorScheme(
+            watterButton = extendedLight.watterButton,
+            allTypesButton = extendedLight.allTypesButton,
+            dragonButton = extendedLight.dragonButton,
+            eletricButton = extendedLight.eletricButton,
+            fairyButton = extendedLight.fairyButton,
+            ghostButton = extendedLight.ghostButton,
+            fireButton = extendedLight.fireButton,
+            iceButton = extendedLight.iceButton,
+            grassButton = extendedLight.grassButton,
+            bugButton = extendedLight.bugButton,
+            fightingButton = extendedLight.fightingButton,
+            normalButton = extendedLight.normalButton,
+            darkButton = extendedLight.darkButton,
+            customColor1 = extendedLight.customColor1
+        )
     }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
-        }
-    }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = AppTypography,
-        content = content
+    val composedColorScheme = colorScheme.toColorScheme()
+
+    CompositionLocalProvider(LocalPokedexColorScheme provides colorScheme) {
+        MaterialTheme(
+            colorScheme = composedColorScheme,
+            typography = AppTypography,
+            content = content
+        )
+    }
+}
+
+// Função para mapear PokedexColorScheme para um ColorScheme
+fun PokedexColorScheme.toColorScheme(): ColorScheme {
+    return lightColorScheme(
+        primary = watterButton.color,
+        onPrimary = watterButton.onColor,
+        primaryContainer = watterButton.colorContainer,
+        onPrimaryContainer = watterButton.onColorContainer,
+
+        secondary = allTypesButton.color,
+        onSecondary = allTypesButton.onColor,
+        secondaryContainer = allTypesButton.colorContainer,
+        onSecondaryContainer = allTypesButton.onColorContainer,
+
+
+        tertiary = dragonButton.color,
+        onTertiary = dragonButton.onColor,
+        tertiaryContainer = dragonButton.colorContainer,
+        onTertiaryContainer = dragonButton.onColorContainer,
+
+        background = fireButton.color,
+        onBackground = fireButton.onColor,
+        surface = iceButton.color,
+        onSurface = iceButton.onColor
     )
 }
