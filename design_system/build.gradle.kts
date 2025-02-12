@@ -51,4 +51,7 @@ dependencies {
     implementation(libs.koin.androidx.compose.v350)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compiler)
+
+    //Font
+    implementation(libs.androidx.ui.text.google.fonts)
 }
