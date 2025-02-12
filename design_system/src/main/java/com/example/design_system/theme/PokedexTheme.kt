@@ -37,6 +37,8 @@ import com.example.design_system.theme.colors.normalButtonDark
 import com.example.design_system.theme.colors.normalButtonLight
 import com.example.design_system.theme.colors.onPrimaryDarkHighContrast
 import com.example.design_system.theme.colors.onPrimaryLightHighContrast
+import com.example.design_system.theme.colors.onSecondaryLight
+import com.example.design_system.theme.colors.scrimLight
 import com.example.design_system.theme.colors.surfaceContainerDark
 import com.example.design_system.theme.colors.surfaceContainerLight
 import com.example.design_system.theme.colors.surfaceDark
@@ -121,12 +123,12 @@ fun PokedexTheme(
         LocalDragonButton provides context.dragonButton,
         LocalEletricButton provides context.eletricButton,
         LocalFairyButton provides context.fairyButton,
-        LocalGhostButton provides  context.ghostButton,
+        LocalGhostButton provides context.ghostButton,
         LocalFireButton provides context.fireButton,
         LocalIceButton provides context.iceButton,
         LocalGrassButton provides context.grassButton,
-        LocalBugButton  provides context.bugButton,
-        LocalFightingButton provides  context.fightingButton,
+        LocalBugButton provides context.bugButton,
+        LocalFightingButton provides context.fightingButton,
         LocalNormalButton provides context.normalButton,
         LocalDarkButton provides context.darkButton,
         LocalCustomColor1 provides context.customColor1,
@@ -157,31 +159,31 @@ fun systemContext(
 
 
 object PokedexTheme {
-    val watterButton : Color
-    @Composable
-    get() = LocalWatterButton.current
+    val watterButton: Color
+        @Composable
+        get() = LocalWatterButton.current
 
-    val allTypesButton : Color
+    val allTypesButton: Color
         @Composable
         get() = LocalAllTypesButton.current
 
-    val dragonButton : Color
+    val dragonButton: Color
         @Composable
         get() = LocalDragonButton.current
 
-    val eletricButton : Color
+    val eletricButton: Color
         @Composable
         get() = LocalEletricButton.current
 
-    val fairyButton : Color
+    val fairyButton: Color
         @Composable
         get() = LocalFairyButton.current
 
-    val ghostButton : Color
+    val ghostButton: Color
         @Composable
         get() = LocalGhostButton.current
 
-    val fireButton : Color
+    val fireButton: Color
         @Composable
         get() = LocalFireButton.current
 
@@ -221,6 +223,14 @@ object PokedexTheme {
     val primaryButtonTextColor: Color
         @Composable
         get() = LocalPrimaryButtonTextColor.current
+
+    val blackText: Color
+        @Composable
+        get() = scrimLight
+
+    val whiteText: Color
+        @Composable
+        get() = onSecondaryLight
 }
 
 fun PokedexColorScheme.toColorScheme(): ColorScheme {
