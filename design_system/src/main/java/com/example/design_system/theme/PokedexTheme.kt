@@ -136,7 +136,14 @@ fun PokedexTheme(
         LocalText provides context.text,
         LocalPrimaryButton provides context.primaryButton,
         LocalSecondaryButton provides context.secondaryButton,
-        LocalPrimaryButtonTextColor provides context.primaryButtonTextColor
+        LocalPrimaryButtonTextColor provides context.primaryButtonTextColor,
+        LocalMetalButton provides context.metalButton,
+        LocalRockButton provides context.rockButton,
+        LocalPsychicButton provides context.psychicButton,
+        LocalGroundButton provides context.groundButton,
+        LocalPoisonButton provides context.poisonButton,
+        LocalFlyingButton provides context.flyingButton
+
     ) {
         MaterialTheme(
             colorScheme = composedColorScheme,
@@ -220,6 +227,30 @@ object PokedexTheme {
     val secondaryButton: Color
         @Composable
         get() = LocalSecondaryButton.current
+    val metalButton: Color
+        @Composable
+        get() = LocalMetalButton.current
+
+    val rockButton: Color
+        @Composable
+        get() = LocalRockButton.current
+
+    val psychicButton: Color
+        @Composable
+        get() = LocalPsychicButton.current
+
+    val groundButton: Color
+        @Composable
+        get() = LocalGroundButton.current
+
+    val poisonButton: Color
+        @Composable
+        get() = LocalPoisonButton.current
+
+    val flyingButton: Color
+        @Composable
+        get() = LocalFlyingButton.current
+
     val primaryButtonTextColor: Color
         @Composable
         get() = LocalPrimaryButtonTextColor.current

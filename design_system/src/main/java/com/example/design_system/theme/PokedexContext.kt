@@ -24,4 +24,10 @@ interface PokedexContext {
     val primaryButton: Color
     val secondaryButton: Color
     val primaryButtonTextColor: Color
+    val metalButton: Color
+    val rockButton: Color
+    val psychicButton: Color
+    val groundButton: Color
+    val poisonButton: Color
+    val flyingButton: Color
 }

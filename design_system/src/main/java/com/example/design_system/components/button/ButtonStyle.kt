@@ -14,7 +14,30 @@ sealed interface ButtonStyle {
     val textSize  @Composable get() = 18.sp
     val background @Composable get() = PokedexTheme.primaryButton
 
-    object Primary: ButtonStyle
+    object Primary: ButtonStyle{
+        override val textColor: Color
+        @Composable
+        get() = PokedexTheme.primaryButtonTextColor
+        override val textSize: TextUnit
+        @Composable
+        get() = 14.sp
+        override val background: Color
+        @Composable
+        get() = PokedexTheme.primaryButton
+    }
+
+    object Secondary: ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.primaryButton
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.secondaryButton
+    }
+
 
     object Watter: ButtonStyle{
         override val textColor: Color
@@ -94,16 +117,165 @@ sealed interface ButtonStyle {
 
     }
 
+    object Fire : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.fireButton
 
-    val ghostButton @Composable get() = PokedexTheme.ghostButton
-    val fireButton @Composable get() = PokedexTheme.fireButton
-    val iceButton @Composable get() = PokedexTheme.iceButton
-    val grassButton @Composable get() = PokedexTheme.grassButton
-    val bugButton @Composable get() = PokedexTheme.bugButton
-    val fightingButton @Composable get() = PokedexTheme.fightingButton
-    val normalButton @Composable get() = PokedexTheme.normalButton
-    val darkButton @Composable get() = PokedexTheme.darkButton
-    val primaryButton @Composable get() = PokedexTheme.primaryButton
-    val secondaryButton @Composable get() = PokedexTheme.secondaryButton
+    }
+
+    object  Ice : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.iceButton
+
+    }
+
+    object Grass: ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.grassButton
+
+    }
+
+    object Bug : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.bugButton
+    }
+
+    object Fighting : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.whiteText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.fightingButton
+    }
+
+    object Normal : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.normalButton
+    }
+
+    object Dark : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.whiteText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.darkButton
+    }
+
+    object Metal : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.metalButton
+    }
+
+    object Rock : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.rockButton
+    }
+
+    object Psychic : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.psychicButton
+    }
+
+    object Ground : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.groundButton
+    }
+
+    object Poison : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.poisonButton
+    }
+
+    object Flying : ButtonStyle{
+        override val textColor: Color
+            @Composable
+            get() = PokedexTheme.blackText
+        override val textSize: TextUnit
+            @Composable
+            get() = 14.sp
+        override val background: Color
+            @Composable
+            get() = PokedexTheme.flyingButton
+    }
+
+
 
 }

@@ -12,13 +12,19 @@ import com.example.design_system.theme.colors.eletricButtonLight
 import com.example.design_system.theme.colors.fairyButtonLight
 import com.example.design_system.theme.colors.fightingButtonLight
 import com.example.design_system.theme.colors.fireButtonLight
+import com.example.design_system.theme.colors.flyingButtonLight
 import com.example.design_system.theme.colors.ghostButtonLight
 import com.example.design_system.theme.colors.grassButtonLight
+import com.example.design_system.theme.colors.groundButtonLight
 import com.example.design_system.theme.colors.iceButtonLight
+import com.example.design_system.theme.colors.metalButtonLight
 import com.example.design_system.theme.colors.normalButtonLight
 import com.example.design_system.theme.colors.onPrimaryLight
 import com.example.design_system.theme.colors.onPrimaryLightHighContrast
+import com.example.design_system.theme.colors.poisonButtonLight
 import com.example.design_system.theme.colors.primaryLightHighContrast
+import com.example.design_system.theme.colors.psychicButtonLight
+import com.example.design_system.theme.colors.rockButtonLight
 import com.example.design_system.theme.colors.surfaceContainerDark
 import com.example.design_system.theme.colors.watterButtonLight
 
@@ -43,4 +49,10 @@ object PokedexContextLight : PokedexContext {
     override val primaryButton = primaryLightHighContrast
     override val secondaryButton = onPrimaryLight
     override val primaryButtonTextColor = onPrimaryLight
+    override val metalButton = metalButtonLight
+    override val rockButton = rockButtonLight
+    override val psychicButton = psychicButtonLight
+    override val groundButton = groundButtonLight
+    override val poisonButton = poisonButtonLight
+    override val flyingButton = flyingButtonLight
 }
