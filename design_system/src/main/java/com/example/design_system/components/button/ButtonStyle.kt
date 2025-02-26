@@ -276,6 +276,4 @@ sealed interface ButtonStyle {
             get() = PokedexTheme.flyingButton
     }
 
-
-
 }

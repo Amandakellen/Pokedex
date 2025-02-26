@@ -3,6 +3,7 @@ package com.example.design_system.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -113,10 +114,6 @@ fun PokedexTheme(
     context: PokedexContext = systemContext(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = extendedLight
-
-    val composedColorScheme = colorScheme.toColorScheme()
-
     CompositionLocalProvider(
         LocalWatterButton provides context.watterButton,
         LocalAllTypesButton provides context.allTypesButton,
@@ -145,11 +142,31 @@ fun PokedexTheme(
         LocalFlyingButton provides context.flyingButton
 
     ) {
+        val colors = PokedexColorScheme(
+            watterButton =context. watterButton,
+            allTypesButton = context.allTypesButton,
+            dragonButton = context.dragonButton,
+            eletricButton = context.eletricButton,
+            fairyButton = context.fairyButton,
+            ghostButton = context.ghostButton,
+            fireButton = context.fireButton,
+            iceButton = context.iceButton,
+            grassButton = context.grassButton,
+            bugButton = context.bugButton,
+            fightingButton = context.fightingButton,
+            normalButton = context.normalButton,
+            darkButton = context.darkButton,
+            customColor1 = context.customColor1,
+            background = context.background,
+            text = context.text
+        )
+
         MaterialTheme(
-            colorScheme = composedColorScheme,
+            colorScheme = colors.toColorScheme(),
             typography = AppTypography,
             content = content
         )
+
     }
 }
 

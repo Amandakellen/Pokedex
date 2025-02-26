@@ -54,4 +54,9 @@ dependencies {
 
     //Font
     implementation(libs.androidx.ui.text.google.fonts)
+
+    //preview
+    implementation(libs.ui.tooling.preview)
+    debugImplementation(libs.ui.tooling)
+    implementation (libs.kotlin.reflect)
 }
