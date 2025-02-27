@@ -42,7 +42,7 @@ sealed interface ButtonStyle {
     object Watter: ButtonStyle{
         override val textColor: Color
             @Composable
-            get() = PokedexTheme.blackText
+            get() = PokedexTheme.whiteText
         override val textSize: TextUnit
             @Composable
             get() = 14.sp
