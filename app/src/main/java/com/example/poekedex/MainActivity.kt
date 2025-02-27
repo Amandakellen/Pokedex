@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.design_system.components.button.ButtonComponent
+import com.example.design_system.components.button.ButtonStyle
 import com.example.design_system.theme.PokedexTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,9 +22,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             PokedexTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                    ButtonComponent(
+                        "text",
+                        Modifier.padding(innerPadding),
+                        ButtonStyle.Watter,
+                        {}
                     )
                 }
             }
@@ -30,18 +34,15 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     PokedexTheme {
-        Greeting("Android")
+        ButtonComponent(
+            "text",
+            Modifier,
+            ButtonStyle.Watter,
+            {}
+        )
     }
 }
