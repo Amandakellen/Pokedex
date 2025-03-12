@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.onboarding"
+    namespace = "com.example.features.onboarding"
     compileSdk = 35
 
     defaultConfig {
@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(project(":design_system"))
     implementation(libs.foundation.android)
+    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

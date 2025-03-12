@@ -1,4 +1,4 @@
-package com.example.onboarding.presentation.state
+package com.example.features.onboarding.presentation.state
 
 sealed class OnboardingState {
 }

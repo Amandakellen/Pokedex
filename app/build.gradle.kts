@@ -67,5 +67,6 @@ dependencies {
 
     //Project
     implementation(project(":features"))
+    implementation(project(":features:onboarding"))
     implementation(project(":design_system"))
 }

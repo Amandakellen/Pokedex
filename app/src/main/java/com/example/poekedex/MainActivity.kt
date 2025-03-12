@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.design_system.components.button.ButtonComponent
 import com.example.design_system.components.button.ButtonStyle
 import com.example.design_system.theme.PokedexTheme
+import com.example.features.onboarding.presentation.OnboardingStartScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,12 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PokedexTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ButtonComponent(
-                        "text",
-                        Modifier.padding(innerPadding),
-                        ButtonStyle.Watter,
-                        {}
-                    )
+                    OnboardingStartScreen(Modifier.padding(innerPadding))
                 }
             }
         }
