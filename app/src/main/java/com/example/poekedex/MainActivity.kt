@@ -15,6 +15,7 @@ import com.example.design_system.components.button.ButtonComponent
 import com.example.design_system.components.button.ButtonStyle
 import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.presentation.OnboardingStartScreen
+import com.example.poekedex.navigation.AppNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PokedexTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    OnboardingStartScreen(Modifier.padding(innerPadding))
-                }
+                AppNavigation()
             }
         }
     }

@@ -27,24 +27,33 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.design_system.R.drawable.*
+import com.example.onboarding.presentation.action.OnboardingAction
+import com.example.onboarding.presentation.action.OnboardingAction.*
+import com.example.onboarding.presentation.action.OnboardingAction.Action.GoToNextScreen
+import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import kotlinx.coroutines.delay
+import org.koin.androidx.compose.getViewModel
 import androidx.compose.runtime.LaunchedEffect as LaunchedEffect1
 
 @Composable
-fun OnboardingStartScreen(modifier: Modifier) {
-    Row(modifier = modifier
-        .fillMaxSize()
-        .background(PokedexTheme.primaryButton),
+fun OnboardingStartScreen(
+    viewModel: OnboardingViewModel = getViewModel(),
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxSize()
+            .background(PokedexTheme.primaryButton),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
 
-   ) {
-        AnimeImage (ic_pokedex_name)
+    ) {
+        AnimeImage(ic_pokedex_name)
     }
 }
 
 @Composable
-fun AnimeImage(imageResId: Int){
+fun AnimeImage(imageResId: Int) {
     var scale by remember { mutableStateOf(1f) }
     val scaleAnim = rememberInfiniteTransition()
     val scaleAnimation by scaleAnim.animateFloat(
@@ -83,5 +92,5 @@ fun AnimeImage(imageResId: Int){
 @Preview(showBackground = true)
 @Composable
 fun OnboardingStartScreenPreview() {
-    OnboardingStartScreen(Modifier)
+    OnboardingStartScreen()
 }
