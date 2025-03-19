@@ -74,7 +74,7 @@ fun OnboardingInformativeStepScren(@DrawableRes imageRes: Int) {
                 .fillMaxWidth()
                 .weight(1f),
             text = stringResource(R.string.informative_fisrt_title),
-            style = TextStyle(fontSize = 26.sp, color = PokedexTheme.text, fontFamily = Bold),
+            style = TextStyle(fontSize = 26.sp, color = PokedexTheme.text),
             textAlign = TextAlign.Center
         )
     }
