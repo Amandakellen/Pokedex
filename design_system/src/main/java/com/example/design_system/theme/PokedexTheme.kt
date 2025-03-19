@@ -18,6 +18,8 @@ import com.example.design_system.theme.colors.customColor1Dark
 import com.example.design_system.theme.colors.customColor1Light
 import com.example.design_system.theme.colors.darkButtonDark
 import com.example.design_system.theme.colors.darkButtonLight
+import com.example.design_system.theme.colors.disableButtonDark
+import com.example.design_system.theme.colors.disableButtonLight
 import com.example.design_system.theme.colors.dragonButtonDark
 import com.example.design_system.theme.colors.dragonButtonLight
 import com.example.design_system.theme.colors.eletricButtonDark
@@ -69,6 +71,7 @@ data class PokedexColorScheme(
     val customColor1: Color,
     val background: Color,
     val text: Color,
+    val disableButton: Color
 )
 
 val extendedLight = PokedexColorScheme(
@@ -87,7 +90,8 @@ val extendedLight = PokedexColorScheme(
     darkButton = darkButtonLight,
     customColor1 = customColor1Light,
     background = onPrimaryLightHighContrast,
-    text = surfaceContainerDark
+    text = surfaceContainerDark,
+    disableButton =  disableButtonLight
 )
 
 val extendedDark = PokedexColorScheme(
@@ -106,7 +110,8 @@ val extendedDark = PokedexColorScheme(
     darkButton = darkButtonDark,
     customColor1 = customColor1Dark,
     background = onPrimaryDarkHighContrast,
-    text = surfaceContainerLight
+    text = surfaceContainerDark,
+    disableButton =  disableButtonDark
 )
 
 @Composable
@@ -139,7 +144,8 @@ fun PokedexTheme(
         LocalPsychicButton provides context.psychicButton,
         LocalGroundButton provides context.groundButton,
         LocalPoisonButton provides context.poisonButton,
-        LocalFlyingButton provides context.flyingButton
+        LocalFlyingButton provides context.flyingButton,
+        LocalDisableButton provides context.disableButton
 
     ) {
         val colors = PokedexColorScheme(
@@ -158,7 +164,8 @@ fun PokedexTheme(
             darkButton = context.darkButton,
             customColor1 = context.customColor1,
             background = context.background,
-            text = context.text
+            text = context.text,
+            disableButton = context.disableButton
         )
 
         MaterialTheme(
@@ -183,6 +190,10 @@ fun systemContext(
 
 
 object PokedexTheme {
+    val disableButton: Color
+        @Composable
+        get() = LocalDisableButton.current
+
     val watterButton: Color
         @Composable
         get() = LocalWatterButton.current

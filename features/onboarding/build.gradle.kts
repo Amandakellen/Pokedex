@@ -56,4 +56,7 @@ dependencies {
 
     //Navigation
     implementation(libs.androidx.navigation.compose.v260)
+
+    //compose
+    implementation(libs.androidx.foundation)
 }

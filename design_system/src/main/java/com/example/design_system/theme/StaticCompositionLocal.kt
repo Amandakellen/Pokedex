@@ -30,3 +30,4 @@ val LocalPsychicButton = staticCompositionLocalOf { PokedexContextLight.psychicB
 val LocalGroundButton = staticCompositionLocalOf { PokedexContextLight.groundButton }
 val LocalPoisonButton = staticCompositionLocalOf { PokedexContextLight.poisonButton }
 val LocalFlyingButton = staticCompositionLocalOf { PokedexContextLight.flyingButton }
+val LocalDisableButton = staticCompositionLocalOf { PokedexContextLight.disableButton }

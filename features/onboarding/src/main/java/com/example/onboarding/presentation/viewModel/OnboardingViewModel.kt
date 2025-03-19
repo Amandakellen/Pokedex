@@ -8,7 +8,7 @@ import com.example.onboarding.presentation.action.OnboardingAction.Action.*
 import com.example.onboarding.presentation.effect.OnboardingEffect
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class OnboardingViewModel: ViewModel(), OnboardingAction {
+class OnboardingViewModel : ViewModel(), OnboardingAction {
     private val _state = MutableStateFlow<OnboardingState>(OnboardingState.Loading)
     val state = _state
 
@@ -16,20 +16,27 @@ class OnboardingViewModel: ViewModel(), OnboardingAction {
     val effect = _effect
 
     override fun sendAction(action: Action) {
-        when (action){
-             GoToNextScreen -> {
-                 _effect.value = OnboardingEffect.GoToFirstScreen
-                 _state.value = OnboardingState.Resume
-             }
-             ClickContinueButton, ClickStartButton -> {
-                 _effect.value = OnboardingEffect.NextScreen
-             }
-             ClickCreateAccountButton -> {
-                 _effect.value = OnboardingEffect.GoToCreateAccountScreen
-             }
-             ClickLoginButton -> {
-                 _effect.value = OnboardingEffect.GoToLoginScreen
-             }
+        when (action) {
+            GoToNextScreen -> {
+                _effect.value = OnboardingEffect.GoToOnboarding
+                _state.value = OnboardingState.Resume
+            }
+
+            ClickContinueButton -> {
+                _effect.value = OnboardingEffect.NextScreen
+            }
+
+            ClickCreateAccountButton -> {
+                _effect.value = OnboardingEffect.GoToCreateAccount
+            }
+
+            ClickLoginButton -> {
+                _effect.value = OnboardingEffect.GoToLogin
+            }
+
+            ClickStartButton -> {
+                _effect.value = OnboardingEffect.GoToLoginScreen
+            }
         }
     }
 }

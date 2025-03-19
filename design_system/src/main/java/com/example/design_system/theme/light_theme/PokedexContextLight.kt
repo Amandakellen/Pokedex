@@ -7,6 +7,8 @@ import com.example.design_system.theme.colors.allTypesButtonLight
 import com.example.design_system.theme.colors.bugButtonLight
 import com.example.design_system.theme.colors.customColor1Light
 import com.example.design_system.theme.colors.darkButtonLight
+import com.example.design_system.theme.colors.disableButtonDark
+import com.example.design_system.theme.colors.disableButtonLight
 import com.example.design_system.theme.colors.dragonButtonLight
 import com.example.design_system.theme.colors.eletricButtonLight
 import com.example.design_system.theme.colors.fairyButtonLight
@@ -55,4 +57,5 @@ object PokedexContextLight : PokedexContext {
     override val groundButton = groundButtonLight
     override val poisonButton = poisonButtonLight
     override val flyingButton = flyingButtonLight
+    override val disableButton = disableButtonLight
 }

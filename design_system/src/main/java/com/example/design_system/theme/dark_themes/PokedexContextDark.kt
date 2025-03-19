@@ -7,6 +7,7 @@ import com.example.design_system.theme.colors.allTypesButtonDark
 import com.example.design_system.theme.colors.bugButtonDark
 import com.example.design_system.theme.colors.customColor1Dark
 import com.example.design_system.theme.colors.darkButtonDark
+import com.example.design_system.theme.colors.disableButtonDark
 import com.example.design_system.theme.colors.dragonButtonDark
 import com.example.design_system.theme.colors.eletricButtonDark
 import com.example.design_system.theme.colors.fairyButtonDark
@@ -55,5 +56,6 @@ object PokedexContextDark : PokedexContext {
     override val groundButton = groundButtonDark
     override val poisonButton = poisonButtonDark
     override val flyingButton = flyingButtonDark
+    override val disableButton = disableButtonDark
 
 }
