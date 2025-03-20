@@ -15,21 +15,37 @@ import androidx.compose.material3.Text
 import androidx.compose.foundation.Image
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.text.style.TextAlign
+import com.example.design_system.components.button.ButtonComponent
+import com.example.design_system.components.button.ButtonStyle
 import com.example.design_system.components.contentcontrol.ContentControl
 import com.example.design_system.theme.AppTypography
 import com.example.features.onboarding.R
+import com.example.onboarding.presentation.action.OnboardingAction
+import com.example.onboarding.presentation.viewModel.OnboardingViewModel
+import org.koin.androidx.compose.getViewModel
+
+const val PAGER_SIZE = 2
+const val FIRST_STEP = 0
+const val SECOND_STEP = 1
 
 @Composable
-fun OnboardingInformativeScreen() {
-    val images = listOf(R.drawable.ic_professor_and_trainer)
+fun OnboardingInformativeScreen(
+    viewModel: OnboardingViewModel = getViewModel(),
+
+    ) {
+    val state by viewModel.state.collectAsState()
+    val sendAction = viewModel::sendAction
+    val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
 
     val pagerState = rememberPagerState(0) { images.size }
 
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage }.collect { currentPage ->
-//            sendAction(NavigateStep(step = currentPage, shouldLog = false))
+            sendAction(OnboardingAction.Action.NavigateStep(step = currentPage))
         }
     }
     Scaffold(
@@ -46,6 +62,20 @@ fun OnboardingInformativeScreen() {
                 ) { page ->
                     OnboardingInformativeStepScreen(images[page])
                 }
+
+                ButtonComponent(
+                    label = stringResource(R.string.informative_fisrt_screen_title),
+                    style = ButtonStyle.Primary,
+                    onClick = {
+                        sendAction(
+                            OnboardingAction.Action.NavigateStep(
+                                pagerState.currentPage.plus(
+                                    1
+                                )
+                            )
+                        )
+                    }
+                )
 
                 ContentControl(
                     pagerState = pagerState,
@@ -66,8 +96,8 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
         Spacer(modifier = Modifier.height(40.dp))
         Image(
             modifier = Modifier
-                .padding(40.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .weight(1f),
             painter = painterResource(id = imageRes),
             contentDescription = null
         )
@@ -78,7 +108,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(16.dp),
-            text = stringResource(R.string.informative_fisrt_title),
+            text = stringResource(R.string.informative_fisrt_screen_title),
             style = AppTypography.headlineMedium,
             textAlign = TextAlign.Center
         )
@@ -87,7 +117,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(16.dp),
-            text = "Acesse uma vasta lista de Pokémon de todas as gerações já feitas pela Nintendo",
+            text =  stringResource(R.string.informative_fisrt_screen_subtitle),
             style = AppTypography.bodyLarge,
             textAlign = TextAlign.Center
         )

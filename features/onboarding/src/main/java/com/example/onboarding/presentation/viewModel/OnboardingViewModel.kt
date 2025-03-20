@@ -6,6 +6,8 @@ import com.example.onboarding.presentation.action.OnboardingAction
 import com.example.onboarding.presentation.action.OnboardingAction.*
 import com.example.onboarding.presentation.action.OnboardingAction.Action.*
 import com.example.onboarding.presentation.effect.OnboardingEffect
+import com.example.onboarding.presentation.view.informative.FIRST_STEP
+import com.example.onboarding.presentation.view.informative.PAGER_SIZE
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class OnboardingViewModel : ViewModel(), OnboardingAction {
@@ -17,13 +19,22 @@ class OnboardingViewModel : ViewModel(), OnboardingAction {
 
     override fun sendAction(action: Action) {
         when (action) {
-            GoToNextScreen -> {
+            GoToInformativeScreen -> {
                 _effect.value = OnboardingEffect.GoToOnboarding
                 _state.value = OnboardingState.Resume
             }
 
-            ClickContinueButton -> {
-                _effect.value = OnboardingEffect.NextScreen
+            is NavigateStep -> {
+                if (action.step in FIRST_STEP until PAGER_SIZE){
+                    _state.value =
+                        OnboardingState.Initial(checkNotNull(_state.value).uiModel.copy(
+                            currentStep = action.step))
+                    _effect.value = OnboardingEffect.GoToStep(action.step)
+                }
+                if(action.step == PAGER_SIZE){
+                    _effect.value = OnboardingEffect.GoToLoginScreen
+                }
+
             }
 
             ClickCreateAccountButton -> {
@@ -34,9 +45,6 @@ class OnboardingViewModel : ViewModel(), OnboardingAction {
                 _effect.value = OnboardingEffect.GoToLogin
             }
 
-            ClickStartButton -> {
-                _effect.value = OnboardingEffect.GoToLoginScreen
-            }
         }
     }
 }

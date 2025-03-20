@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="informative_fisrt_title">Todos os Pokémons em um só Lugar</string>
-    <string name="informative_fisrt_scree_subtitle">Acesse uma vasta lista de Pokémon de
-todas as gerações já feitas pela Nintendo</string>
+    <string name="informative_fisrt_screen_title">Todos os Pokémons em um só Lugar</string>
+    <string name="informative_fisrt_screen_subtitle">Acesse uma vasta lista de Pokémon de todas as gerações já feitas pela Nintendo</string>
+    <string name="informative_fisrt_screen_continue_button">Continue</string>
 </resources>

@@ -30,14 +30,14 @@ import androidx.compose.ui.unit.dp
 import com.example.design_system.R.drawable.*
 import com.example.features.onboarding.presentation.state.OnboardingState
 import com.example.onboarding.presentation.action.OnboardingAction.*
-import com.example.onboarding.presentation.action.OnboardingAction.Action.GoToNextScreen
+import com.example.onboarding.presentation.action.OnboardingAction.Action.GoToInformativeScreen
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import kotlinx.coroutines.delay
 import org.koin.androidx.compose.getViewModel
 import androidx.compose.runtime.LaunchedEffect as LaunchedEffect1
 
 @Composable
-fun OnboardingStartScreen(
+fun OnboardingHomeScreen(
     viewModel: OnboardingViewModel = getViewModel(),
     modifier: Modifier = Modifier
 ) {
@@ -72,7 +72,7 @@ fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
 
     LaunchedEffect1(key1 = true) {
         delay(4000L)
-        sendAction(GoToNextScreen)
+        sendAction(GoToInformativeScreen)
     }
 
     LaunchedEffect1(key1 = scaleAnimation) {
@@ -97,6 +97,6 @@ fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun OnboardingStartScreenPreview() {
-    OnboardingStartScreen()
+fun OnboardingHomeScreenPreview() {
+    OnboardingHomeScreen()
 }
