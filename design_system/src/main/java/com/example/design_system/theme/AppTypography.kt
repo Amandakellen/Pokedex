@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
 import com.example.design_system.R
+import androidx.compose.ui.unit.sp
 
 val poppinFont = GoogleFont("Poppins")
 val provider = GoogleFont.Provider(
@@ -16,11 +17,17 @@ val provider = GoogleFont.Provider(
 )
 
 val poppinsFontFamily = FontFamily(
-    Font(googleFont = poppinFont, fontProvider = provider, weight = FontWeight.Bold)
+    Font(googleFont = poppinFont, fontProvider = provider)
 )
 
 val AppTypography = Typography(
     bodyLarge = TextStyle(
         fontFamily = poppinsFontFamily
+    ),
+    headlineMedium = TextStyle(
+        fontSize = 26.sp,
+        fontWeight = FontWeight.Bold,
+        fontFamily = poppinsFontFamily
     )
 )
+

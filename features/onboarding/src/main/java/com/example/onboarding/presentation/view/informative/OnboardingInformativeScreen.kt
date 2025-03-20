@@ -1,82 +1,97 @@
 package com.example.onboarding.presentation.view.informative
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.foundation.Image
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Text
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.foundation.Image
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.text.style.TextAlign
 import com.example.design_system.components.contentcontrol.ContentControl
-import com.example.design_system.theme.PokedexTheme
+import com.example.design_system.theme.AppTypography
 import com.example.features.onboarding.R
 
 @Composable
 fun OnboardingInformativeScreen() {
     val images = listOf(R.drawable.ic_professor_and_trainer)
 
-    val pagerState = rememberPagerState(0) {
-        images.size
-    }
-    val coroutineScope = rememberCoroutineScope()
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.Center
-    ) {
-        HorizontalPager(
-            modifier = Modifier.fillMaxWidth(),
-            state = pagerState
-        ) { page ->
-            OnboardingInformativeStepScren(images[page])
+    val pagerState = rememberPagerState(0) { images.size }
+
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }.collect { currentPage ->
+//            sendAction(NavigateStep(step = currentPage, shouldLog = false))
         }
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        ContentControl(
-            pagerState = pagerState,
-            pageCount = images.size,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(16.dp)
-        )
     }
+    Scaffold(
+        content = {
+            Column(
+                modifier = Modifier
+                    .padding(it),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                HorizontalPager(
+                    modifier = Modifier.weight(.1f),
+                    state = pagerState
+                ) { page ->
+                    OnboardingInformativeStepScreen(images[page])
+                }
+
+                ContentControl(
+                    pagerState = pagerState,
+                    pageCount = images.size,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(16.dp)
+                )
+            }
+        }
+    )
+
 }
 
 @Composable
-fun OnboardingInformativeStepScren(@DrawableRes imageRes: Int) {
-    Column(
-        modifier = Modifier
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
+fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
+    Column {
+        Spacer(modifier = Modifier.height(40.dp))
         Image(
             modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
+                .padding(40.dp)
+                .fillMaxWidth(),
             painter = painterResource(id = imageRes),
             contentDescription = null
         )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         Text(
             modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
+                .align(Alignment.CenterHorizontally)
+                .padding(16.dp),
             text = stringResource(R.string.informative_fisrt_title),
-            style = TextStyle(fontSize = 26.sp, color = PokedexTheme.text),
+            style = AppTypography.headlineMedium,
             textAlign = TextAlign.Center
         )
+
+        Text(
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(16.dp),
+            text = "Acesse uma vasta lista de Pokémon de todas as gerações já feitas pela Nintendo",
+            style = AppTypography.bodyLarge,
+            textAlign = TextAlign.Center
+        )
+        Spacer(modifier = Modifier.weight(1f))
     }
 }
 
