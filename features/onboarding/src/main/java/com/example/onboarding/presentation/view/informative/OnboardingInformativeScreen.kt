@@ -25,27 +25,41 @@ import com.example.design_system.components.contentcontrol.ContentControl
 import com.example.design_system.theme.AppTypography
 import com.example.features.onboarding.R
 import com.example.onboarding.presentation.action.OnboardingAction
+import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 const val PAGER_SIZE = 2
 const val FIRST_STEP = 0
 const val SECOND_STEP = 1
 
 @Composable
-fun OnboardingInformativeScreen(
-    viewModel: OnboardingViewModel = getViewModel(),
-
-    ) {
+fun OnboardingInformativeScreen(){
+    val viewModel: OnboardingViewModel = koinViewModel()
     val state by viewModel.state.collectAsState()
     val sendAction = viewModel::sendAction
     val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
 
     val pagerState = rememberPagerState(0) { images.size }
 
+
+
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage }.collect { currentPage ->
             sendAction(OnboardingAction.Action.NavigateStep(step = currentPage))
+        }
+    }
+    LaunchedEffect(Unit) {
+        viewModel.effect.collect { effect ->
+            when (effect) {
+                OnboardingEffect.GoToCreateAccount -> TODO()
+                OnboardingEffect.GoToLogin -> TODO()
+                OnboardingEffect.GoToLoginScreen -> TODO()
+                OnboardingEffect.GoToOnboarding -> TODO()
+                is OnboardingEffect.GoToStep -> TODO()
+                null -> TODO()
+            }
         }
     }
     Scaffold(
@@ -117,7 +131,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(16.dp),
-            text =  stringResource(R.string.informative_fisrt_screen_subtitle),
+            text = stringResource(R.string.informative_fisrt_screen_subtitle),
             style = AppTypography.bodyLarge,
             textAlign = TextAlign.Center
         )

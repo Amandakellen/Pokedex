@@ -34,13 +34,14 @@ import com.example.onboarding.presentation.action.OnboardingAction.Action.GoToIn
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import kotlinx.coroutines.delay
 import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 import androidx.compose.runtime.LaunchedEffect as LaunchedEffect1
 
 @Composable
 fun OnboardingHomeScreen(
-    viewModel: OnboardingViewModel = getViewModel(),
     modifier: Modifier = Modifier
 ) {
+    val viewModel: OnboardingViewModel = koinViewModel()
     val state by viewModel.state.collectAsState()
     if(state is OnboardingState.Loading) {
         Row(
