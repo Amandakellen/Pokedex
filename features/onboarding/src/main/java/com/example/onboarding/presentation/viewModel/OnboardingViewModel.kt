@@ -2,6 +2,7 @@ package com.example.onboarding.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import com.example.features.onboarding.presentation.state.OnboardingState
+import com.example.features.onboarding.presentation.state.OnboardingState.*
 import com.example.onboarding.presentation.action.OnboardingAction
 import com.example.onboarding.presentation.action.OnboardingAction.*
 import com.example.onboarding.presentation.action.OnboardingAction.Action.*
@@ -11,7 +12,7 @@ import com.example.onboarding.presentation.view.informative.PAGER_SIZE
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class OnboardingViewModel : ViewModel(), OnboardingAction {
-    private val _state = MutableStateFlow<OnboardingState>(OnboardingState.Loading)
+    private val _state = MutableStateFlow<OnboardingState>(Loading)
     val state = _state
 
     private val _effect = MutableStateFlow<OnboardingEffect?>(null)
@@ -21,13 +22,14 @@ class OnboardingViewModel : ViewModel(), OnboardingAction {
         when (action) {
             GoToInformativeScreen -> {
                 _effect.value = OnboardingEffect.GoToOnboarding
-                _state.value = OnboardingState.Resume
+                _state.value = Initial(checkNotNull(_state.value).uiModel.copy(
+                    currentStep = 0))
             }
 
             is NavigateStep -> {
                 if (action.step in FIRST_STEP until PAGER_SIZE){
                     _state.value =
-                        OnboardingState.Initial(checkNotNull(_state.value).uiModel.copy(
+                        Initial(checkNotNull(_state.value).uiModel.copy(
                             currentStep = action.step))
                     _effect.value = OnboardingEffect.GoToStep(action.step)
                 }
@@ -45,6 +47,9 @@ class OnboardingViewModel : ViewModel(), OnboardingAction {
                 _effect.value = OnboardingEffect.GoToLogin
             }
 
+            Initialize -> {
+                _state.value = Loading
+            }
         }
     }
 }

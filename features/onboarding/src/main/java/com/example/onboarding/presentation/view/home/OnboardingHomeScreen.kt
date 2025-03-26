@@ -27,23 +27,33 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.design_system.R.drawable.*
 import com.example.features.onboarding.presentation.state.OnboardingState
 import com.example.onboarding.presentation.action.OnboardingAction.*
-import com.example.onboarding.presentation.action.OnboardingAction.Action.GoToInformativeScreen
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import kotlinx.coroutines.delay
-import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.compose.koinViewModel
-import androidx.compose.runtime.LaunchedEffect as LaunchedEffect1
+import androidx.compose.runtime.LaunchedEffect
+import com.example.onboarding.presentation.action.OnboardingAction.Action.*
+import com.example.onboarding.presentation.effect.OnboardingEffect
+import com.example.onboarding.presentation.effect.OnboardingEffect.*
 
 @Composable
 fun OnboardingHomeScreen(
     modifier: Modifier = Modifier,
-    viewModel: OnboardingViewModel = koinViewModel()
+    viewModel: OnboardingViewModel = koinViewModel(),
+    navController: NavController
 ) {
+
+    LaunchedEffect(Unit) {
+        viewModel.sendAction(Initialize)
+    }
     val state by viewModel.state.collectAsState()
-    if(state is OnboardingState.Loading) {
+    val effect = viewModel.effect.collectAsState()
+
+    if (state is OnboardingState.Loading) {
         Row(
             modifier = modifier
                 .fillMaxSize()
@@ -52,9 +62,14 @@ fun OnboardingHomeScreen(
             verticalAlignment = Alignment.CenterVertically
 
         ) {
-            AnimeImage(ic_pokedex_name,viewModel::sendAction )
+            AnimeImage(ic_pokedex_name, viewModel::sendAction)
         }
     }
+
+    if (effect.value is GoToOnboarding) {
+        navController.navigate("onboardingInformative")
+    }
+
 
 }
 
@@ -71,12 +86,12 @@ fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
         )
     )
 
-    LaunchedEffect1(key1 = true) {
+    LaunchedEffect(key1 = true) {
         delay(4000L)
         sendAction(GoToInformativeScreen)
     }
 
-    LaunchedEffect1(key1 = scaleAnimation) {
+    LaunchedEffect(key1 = scaleAnimation) {
         scale = scaleAnimation
     }
 
@@ -99,6 +114,7 @@ fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun OnboardingHomeScreenPreview() {
+    val navController = rememberNavController()
     val fakeViewModel = OnboardingViewModel()
-    OnboardingHomeScreen(viewModel = fakeViewModel)
+    OnboardingHomeScreen(viewModel = fakeViewModel, navController = navController)
 }

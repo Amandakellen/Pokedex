@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Text
 import androidx.compose.foundation.Image
 import androidx.compose.material3.Scaffold
@@ -19,6 +18,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.design_system.components.button.ButtonComponent
 import com.example.design_system.components.button.ButtonStyle
 import com.example.design_system.components.contentcontrol.ContentControl
@@ -28,7 +29,6 @@ import com.example.features.onboarding.R
 import com.example.onboarding.presentation.action.OnboardingAction
 import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
-import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.compose.koinViewModel
 
 const val PAGER_SIZE = 2
@@ -36,12 +36,15 @@ const val FIRST_STEP = 0
 const val SECOND_STEP = 1
 
 @Composable
-fun OnboardingInformativeScreen(viewModel: OnboardingViewModel = koinViewModel()){
+fun OnboardingInformativeScreen(
+    viewModel: OnboardingViewModel = koinViewModel(),
+    navController: NavController
+){
     val state by viewModel.state.collectAsState()
     val sendAction = viewModel::sendAction
     val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
 
-    val pagerState = rememberPagerState(0) { images.size }
+    val pagerState = rememberPagerState(state.uiModel.currentStep) { images.size }
 
 
 
@@ -50,18 +53,7 @@ fun OnboardingInformativeScreen(viewModel: OnboardingViewModel = koinViewModel()
             sendAction(OnboardingAction.Action.NavigateStep(step = currentPage))
         }
     }
-    LaunchedEffect(Unit) {
-        viewModel.effect.collect { effect ->
-            when (effect) {
-                OnboardingEffect.GoToCreateAccount -> TODO()
-                OnboardingEffect.GoToLogin -> TODO()
-                OnboardingEffect.GoToLoginScreen -> TODO()
-                OnboardingEffect.GoToOnboarding -> TODO()
-                is OnboardingEffect.GoToStep -> TODO()
-                null -> TODO()
-            }
-        }
-    }
+
     Scaffold(
         content = {
             Column(
@@ -143,6 +135,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
 @Preview(showBackground = true)
 @Composable
 fun OnboardingInformativeScreenPreview() {
+    val navController  = rememberNavController()
     val fakeViewModel = OnboardingViewModel()
-    OnboardingInformativeScreen(fakeViewModel)
+    OnboardingInformativeScreen(fakeViewModel, navController)
 }
