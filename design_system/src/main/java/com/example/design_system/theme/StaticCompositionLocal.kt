@@ -2,6 +2,7 @@ package com.example.design_system.theme
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import com.example.design_system.data.Spacing
 import com.example.design_system.theme.colors.AppColors
 import com.example.design_system.theme.light_theme.PokedexContextLight
 
@@ -31,3 +32,4 @@ val LocalGroundButton = staticCompositionLocalOf { PokedexContextLight.groundBut
 val LocalPoisonButton = staticCompositionLocalOf { PokedexContextLight.poisonButton }
 val LocalFlyingButton = staticCompositionLocalOf { PokedexContextLight.flyingButton }
 val LocalDisableButton = staticCompositionLocalOf { PokedexContextLight.disableButton }
+val LocalSpacingInset = staticCompositionLocalOf { Spacing() }

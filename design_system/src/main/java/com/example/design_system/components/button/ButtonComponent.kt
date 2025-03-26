@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -137,10 +138,11 @@ fun ButtonComponent(
     ) {
         Button(
             onClick = onClick,
-            shape = RoundedCornerShape(12.dp),
+            shape = RoundedCornerShape(PokedexTheme.padding.medium),
             modifier = modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(PokedexTheme.padding.medium)
+                .height(PokedexTheme.padding.superLarge),
             colors = buttonColors
         ) {
             Text(

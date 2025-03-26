@@ -2,6 +2,7 @@ package com.example.design_system.theme.dark_themes
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
+import com.example.design_system.data.Spacing
 import com.example.design_system.theme.PokedexContext
 import com.example.design_system.theme.colors.allTypesButtonDark
 import com.example.design_system.theme.colors.bugButtonDark
@@ -57,5 +58,6 @@ object PokedexContextDark : PokedexContext {
     override val poisonButton = poisonButtonDark
     override val flyingButton = flyingButtonDark
     override val disableButton = disableButtonDark
+    override val padding =  Spacing()
 
 }

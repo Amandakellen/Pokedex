@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
+import com.example.design_system.data.Spacing
 import com.example.design_system.theme.colors.allTypesButtonDark
 import com.example.design_system.theme.colors.allTypesButtonLight
 import com.example.design_system.theme.colors.bugButtonDark
@@ -145,7 +147,8 @@ fun PokedexTheme(
         LocalGroundButton provides context.groundButton,
         LocalPoisonButton provides context.poisonButton,
         LocalFlyingButton provides context.flyingButton,
-        LocalDisableButton provides context.disableButton
+        LocalDisableButton provides context.disableButton,
+        LocalSpacingInset provides context.padding
 
     ) {
         val colors = PokedexColorScheme(
@@ -290,6 +293,10 @@ object PokedexTheme {
     val whiteText: Color
         @Composable
         get() = onSecondaryLight
+
+    val padding: Spacing
+        @Composable
+        get() = LocalSpacingInset.current
 }
 
 fun PokedexColorScheme.toColorScheme(): ColorScheme {

@@ -11,7 +11,7 @@ import com.example.design_system.theme.PokedexTheme
 @Stable
 sealed interface ButtonStyle {
     val textColor @Composable get() = PokedexTheme.primaryButtonTextColor
-    val textSize  @Composable get() = 18.sp
+    val textSize  @Composable get() = 22.sp
     val background @Composable get() = PokedexTheme.primaryButton
 
     object Primary: ButtonStyle{

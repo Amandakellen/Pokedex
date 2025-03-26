@@ -2,6 +2,7 @@ package com.example.design_system.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
+import com.example.design_system.data.Spacing
 
 @Immutable
 interface PokedexContext {
@@ -31,4 +32,5 @@ interface PokedexContext {
     val poisonButton: Color
     val flyingButton: Color
     val disableButton : Color
+    val padding: Spacing
 }
