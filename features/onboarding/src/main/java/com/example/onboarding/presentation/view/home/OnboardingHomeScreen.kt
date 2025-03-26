@@ -39,9 +39,9 @@ import androidx.compose.runtime.LaunchedEffect as LaunchedEffect1
 
 @Composable
 fun OnboardingHomeScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: OnboardingViewModel = koinViewModel()
 ) {
-    val viewModel: OnboardingViewModel = koinViewModel()
     val state by viewModel.state.collectAsState()
     if(state is OnboardingState.Loading) {
         Row(
@@ -99,5 +99,6 @@ fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun OnboardingHomeScreenPreview() {
-    OnboardingHomeScreen()
+    val fakeViewModel = OnboardingViewModel()
+    OnboardingHomeScreen(viewModel = fakeViewModel)
 }

@@ -23,6 +23,7 @@ import com.example.design_system.components.button.ButtonComponent
 import com.example.design_system.components.button.ButtonStyle
 import com.example.design_system.components.contentcontrol.ContentControl
 import com.example.design_system.theme.AppTypography
+import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
 import com.example.onboarding.presentation.action.OnboardingAction
 import com.example.onboarding.presentation.effect.OnboardingEffect
@@ -35,8 +36,7 @@ const val FIRST_STEP = 0
 const val SECOND_STEP = 1
 
 @Composable
-fun OnboardingInformativeScreen(){
-    val viewModel: OnboardingViewModel = koinViewModel()
+fun OnboardingInformativeScreen(viewModel: OnboardingViewModel = koinViewModel()){
     val state by viewModel.state.collectAsState()
     val sendAction = viewModel::sendAction
     val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
@@ -77,8 +77,17 @@ fun OnboardingInformativeScreen(){
                     OnboardingInformativeStepScreen(images[page])
                 }
 
+
+                ContentControl(
+                    pagerState = pagerState,
+                    pageCount = images.size,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(PokedexTheme.padding.medium)
+                )
+
                 ButtonComponent(
-                    label = stringResource(R.string.informative_fisrt_screen_title),
+                    label = stringResource(R.string.informative_fisrt_screen_continue_button),
                     style = ButtonStyle.Primary,
                     onClick = {
                         sendAction(
@@ -90,14 +99,6 @@ fun OnboardingInformativeScreen(){
                         )
                     }
                 )
-
-                ContentControl(
-                    pagerState = pagerState,
-                    pageCount = images.size,
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally)
-                        .padding(16.dp)
-                )
             }
         }
     )
@@ -107,7 +108,7 @@ fun OnboardingInformativeScreen(){
 @Composable
 fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
     Column {
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(PokedexTheme.padding.superSmall))
         Image(
             modifier = Modifier
                 .fillMaxWidth()
@@ -116,12 +117,12 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
             contentDescription = null
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(PokedexTheme.padding.medium))
 
         Text(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(16.dp),
+                .padding(PokedexTheme.padding.medium),
             text = stringResource(R.string.informative_fisrt_screen_title),
             style = AppTypography.headlineMedium,
             textAlign = TextAlign.Center
@@ -130,7 +131,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
         Text(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(16.dp),
+                .padding(PokedexTheme.padding.medium),
             text = stringResource(R.string.informative_fisrt_screen_subtitle),
             style = AppTypography.bodyLarge,
             textAlign = TextAlign.Center
@@ -142,5 +143,6 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
 @Preview(showBackground = true)
 @Composable
 fun OnboardingInformativeScreenPreview() {
-    OnboardingInformativeScreen()
+    val fakeViewModel = OnboardingViewModel()
+    OnboardingInformativeScreen(fakeViewModel)
 }
