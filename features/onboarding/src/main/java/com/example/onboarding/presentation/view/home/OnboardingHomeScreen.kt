@@ -76,23 +76,32 @@ fun OnboardingHomeScreen(
 @Composable
 fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
     var scale by remember { mutableStateOf(1f) }
-    val scaleAnim = rememberInfiniteTransition()
-    val scaleAnimation by scaleAnim.animateFloat(
-        initialValue = 1f,
-        targetValue = 1.2f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1000, easing = LinearEasing),
-            repeatMode = RepeatMode.Reverse
-        )
-    )
+    var shouldAnimate by remember { mutableStateOf(true) }
 
-    LaunchedEffect(key1 = true) {
+    val scaleAnimation = if (shouldAnimate) {
+        val scaleAnim = rememberInfiniteTransition()
+        scaleAnim.animateFloat(
+            initialValue = 1f,
+            targetValue = 1.2f,
+            animationSpec = infiniteRepeatable(
+                animation = tween(durationMillis = 1000, easing = LinearEasing),
+                repeatMode = RepeatMode.Reverse
+            )
+        ).value
+    } else {
+        1f
+    }
+
+    LaunchedEffect(Unit) {
         delay(4000L)
+        shouldAnimate = false // Interrompe a animação
         sendAction(GoToInformativeScreen)
     }
 
-    LaunchedEffect(key1 = scaleAnimation) {
-        scale = scaleAnimation
+    LaunchedEffect(shouldAnimate) {
+        if (!shouldAnimate) {
+            scale = 1f
+        }
     }
 
     Box(
@@ -107,7 +116,6 @@ fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
                 .scale(scale)
         )
     }
-
 }
 
 
