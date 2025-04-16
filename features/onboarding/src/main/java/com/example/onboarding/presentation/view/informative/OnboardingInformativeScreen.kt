@@ -76,7 +76,11 @@ fun OnboardingInformativeScreen(
                 )
 
                 ButtonComponent(
-                    label = stringResource(R.string.informative_fisrt_screen_continue_button),
+                    label = if (pagerState.currentPage == FIRST_STEP) {
+                        stringResource(R.string.informative_fisrt_screen_continue_button)
+                    } else {
+                        stringResource(R.string.informative_second_screen_continue_button)
+                    },
                     style = ButtonStyle.Primary,
                     onClick = {
                         val next = pagerState.currentPage + 1
