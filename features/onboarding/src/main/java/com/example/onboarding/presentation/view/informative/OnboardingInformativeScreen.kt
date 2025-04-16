@@ -16,7 +16,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -27,7 +26,6 @@ import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
 import com.example.onboarding.presentation.action.OnboardingAction
-import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -44,13 +42,12 @@ fun OnboardingInformativeScreen(
     val sendAction = viewModel::sendAction
     val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
 
-    val pagerState = rememberPagerState(state.uiModel.currentStep) { images.size }
+    val pagerState = rememberPagerState(initialPage = state.uiModel.currentStep, pageCount = { images.size  })
 
-
-
-    LaunchedEffect(pagerState) {
-        snapshotFlow { pagerState.currentPage }.collect { currentPage ->
-            sendAction(OnboardingAction.Action.NavigateStep(step = currentPage))
+    LaunchedEffect(state) {
+        val currentStep = state.uiModel.currentStep
+        if (pagerState.currentPage != currentStep) {
+            pagerState.animateScrollToPage(currentStep)
         }
     }
 
@@ -64,15 +61,15 @@ fun OnboardingInformativeScreen(
             ) {
                 HorizontalPager(
                     modifier = Modifier.weight(.1f),
-                    state = pagerState
+                    state = pagerState,
+                    userScrollEnabled = false
                 ) { page ->
-                    OnboardingInformativeStepScreen(images[page])
+                    OnboardingInformativeStepScreen(images[page], page)
                 }
-
 
                 ContentControl(
                     pagerState = pagerState,
-                    pageCount = images.size,
+                    pageCount = pagerState.pageCount,
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .padding(PokedexTheme.padding.medium)
@@ -82,25 +79,21 @@ fun OnboardingInformativeScreen(
                     label = stringResource(R.string.informative_fisrt_screen_continue_button),
                     style = ButtonStyle.Primary,
                     onClick = {
-                        sendAction(
-                            OnboardingAction.Action.NavigateStep(
-                                pagerState.currentPage.plus(
-                                    1
-                                )
-                            )
-                        )
+                        val next = pagerState.currentPage + 1
+                        if (next < images.size) {
+                            sendAction(OnboardingAction.Action.NavigateStep(next))
+                        }
                     }
                 )
             }
         }
     )
-
 }
 
 @Composable
-fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
+fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
     Column {
-        Spacer(modifier = Modifier.height(PokedexTheme.padding.superSmall))
+        Spacer(modifier = Modifier.height(PokedexTheme.padding.superLarge))
         Image(
             modifier = Modifier
                 .fillMaxWidth()
@@ -115,18 +108,24 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.medium),
-            text = stringResource(R.string.informative_fisrt_screen_title),
+            text = if(page == 0) {
+                stringResource(R.string.informative_fisrt_screen_title)
+            } else stringResource(R.string.informative_second_screen_title),
             style = AppTypography.headlineMedium,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            color = PokedexTheme.text
         )
 
         Text(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.medium),
-            text = stringResource(R.string.informative_fisrt_screen_subtitle),
+            text = if(page == 0) {
+                stringResource(R.string.informative_fisrt_screen_subtitle)
+            } else stringResource(R.string.informative_second_screen_subtitle),
             style = AppTypography.bodyLarge,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            color = PokedexTheme.text
         )
         Spacer(modifier = Modifier.weight(1f))
     }

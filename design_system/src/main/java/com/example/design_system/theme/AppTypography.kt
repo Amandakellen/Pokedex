@@ -27,7 +27,7 @@ val AppTypography = Typography(
     headlineMedium = TextStyle(
         fontSize = 26.sp,
         fontWeight = FontWeight.Bold,
-        fontFamily = poppinsFontFamily
+        fontFamily = poppinsFontFamily,
     )
 )
 

@@ -55,11 +55,11 @@ fun ContentControl(
         }
 
         Box(
-            Modifier
+            modifier = Modifier
+                .height(dotSize.dp)
                 .drawBehind {
                     val distance = (dotSize + dotSpacing).dp.toPx()
-                    val scrollPosition =
-                        pagerState.currentPage + pagerState.currentPageOffsetFraction
+                    val scrollPosition = pagerState.currentPage + pagerState.currentPageOffsetFraction
                     val wormOffset = (scrollPosition % 1) * 2
 
                     val xPos = scrollPosition.toInt() * distance
@@ -77,8 +77,12 @@ fun ContentControl(
                         color = activeColor
                     )
                 }
-                .size(dotSize.dp)
+                .size(
+                    width = ((pageCount - 1) * (dotSize + dotSpacing) + dotSize).dp,
+                    height = dotSize.dp
+                )
         )
+
     }
 }
 
@@ -86,7 +90,7 @@ fun ContentControl(
 @Composable
 fun PreviewContentControl() {
     val pagerState = rememberPagerState(0) {
-        2
+        1
     }
 
     ContentControl(

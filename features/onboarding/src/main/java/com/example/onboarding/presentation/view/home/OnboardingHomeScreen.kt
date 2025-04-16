@@ -94,7 +94,7 @@ fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
 
     LaunchedEffect(Unit) {
         delay(4000L)
-        shouldAnimate = false // Interrompe a animação
+        shouldAnimate = false
         sendAction(GoToInformativeScreen)
     }
 
