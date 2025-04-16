@@ -16,6 +16,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -27,6 +29,11 @@ import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
 import com.example.onboarding.presentation.action.OnboardingAction
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 const val PAGER_SIZE = 2
@@ -37,18 +44,33 @@ const val SECOND_STEP = 1
 fun OnboardingInformativeScreen(
     viewModel: OnboardingViewModel = koinViewModel(),
     navController: NavController
-){
+) {
     val state by viewModel.state.collectAsState()
     val sendAction = viewModel::sendAction
     val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
 
-    val pagerState = rememberPagerState(initialPage = state.uiModel.currentStep, pageCount = { images.size  })
+    val pagerState = rememberPagerState(
+        initialPage = state.uiModel.currentStep,
+        pageCount = { images.size }
+    )
 
+    val coroutineScope = rememberCoroutineScope()
+
+    // Sincroniza UI com o estado do ViewModel
     LaunchedEffect(state) {
         val currentStep = state.uiModel.currentStep
         if (pagerState.currentPage != currentStep) {
             pagerState.animateScrollToPage(currentStep)
         }
+    }
+
+    // Sincroniza ViewModel com mudanças manuais no pager
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }
+            .distinctUntilChanged()
+            .collectLatest { page ->
+                sendAction(OnboardingAction.Action.NavigateStep(page))
+            }
     }
 
     Scaffold(
@@ -62,7 +84,7 @@ fun OnboardingInformativeScreen(
                 HorizontalPager(
                     modifier = Modifier.weight(.1f),
                     state = pagerState,
-                    userScrollEnabled = false
+                    userScrollEnabled = true
                 ) { page ->
                     OnboardingInformativeStepScreen(images[page], page)
                 }
@@ -108,7 +130,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.medium),
-            text = if(page == 0) {
+            text = if (page == 0) {
                 stringResource(R.string.informative_fisrt_screen_title)
             } else stringResource(R.string.informative_second_screen_title),
             style = AppTypography.headlineMedium,
@@ -120,7 +142,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.medium),
-            text = if(page == 0) {
+            text = if (page == 0) {
                 stringResource(R.string.informative_fisrt_screen_subtitle)
             } else stringResource(R.string.informative_second_screen_subtitle),
             style = AppTypography.bodyLarge,
@@ -134,7 +156,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
 @Preview(showBackground = true)
 @Composable
 fun OnboardingInformativeScreenPreview() {
-    val navController  = rememberNavController()
+    val navController = rememberNavController()
     val fakeViewModel = OnboardingViewModel()
     OnboardingInformativeScreen(fakeViewModel, navController)
 }
