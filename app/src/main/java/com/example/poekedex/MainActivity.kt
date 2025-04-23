@@ -23,16 +23,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PokedexTheme {
-        ButtonComponent(
-            "text",
-            Modifier,
-            ButtonStyle.Watter,
-            {}
-        )
-    }
-}

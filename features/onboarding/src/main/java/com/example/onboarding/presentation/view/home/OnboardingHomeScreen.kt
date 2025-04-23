@@ -46,35 +46,39 @@ fun OnboardingHomeScreen(
     viewModel: OnboardingViewModel = koinViewModel(),
     navController: NavController
 ) {
-
     LaunchedEffect(Unit) {
         viewModel.sendAction(Initialize)
     }
-    val state by viewModel.state.collectAsState()
-    val effect = viewModel.effect.collectAsState()
 
-    if (state is OnboardingState.Loading) {
-        Row(
-            modifier = modifier
-                .fillMaxSize()
-                .background(PokedexTheme.primaryButton),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+    val effect by viewModel.effect.collectAsState()
 
-        ) {
-            AnimeImage(ic_pokedex_name, viewModel::sendAction)
+    LaunchedEffect(effect) {
+        when (effect) {
+            is GoToOnboarding -> {
+                navController.navigate("onboardingInformative")
+            }
+            else -> {}
         }
     }
-
-    if (effect.value is GoToOnboarding) {
-        navController.navigate("onboardingInformative")
+    LaunchedEffect(Unit) {
+        delay(4000L)
+        viewModel.sendAction(GoToInformativeScreen)
     }
 
-
+    Row(
+        modifier = modifier
+            .fillMaxSize()
+            .background(PokedexTheme.primaryButton),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        AnimeImage(ic_pokedex_name)
+    }
 }
 
+
 @Composable
-fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
+fun AnimeImage(imageResId: Int) {
     var scale by remember { mutableStateOf(1f) }
     var shouldAnimate by remember { mutableStateOf(true) }
 
@@ -95,7 +99,6 @@ fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
     LaunchedEffect(Unit) {
         delay(4000L)
         shouldAnimate = false
-        sendAction(GoToInformativeScreen)
     }
 
     LaunchedEffect(shouldAnimate) {
@@ -113,11 +116,10 @@ fun AnimeImage(imageResId: Int, sendAction: (Action) -> Unit) {
             contentDescription = null,
             modifier = Modifier
                 .size(200.dp)
-                .scale(scale)
+                .scale(scaleAnimation)
         )
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
