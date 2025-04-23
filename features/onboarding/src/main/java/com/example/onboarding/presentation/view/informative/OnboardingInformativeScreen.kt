@@ -31,7 +31,6 @@ import org.koin.androidx.compose.koinViewModel
 
 const val PAGER_SIZE = 2
 const val FIRST_STEP = 0
-const val SECOND_STEP = 1
 
 @Composable
 fun OnboardingInformativeScreen(
