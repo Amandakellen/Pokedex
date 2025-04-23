@@ -27,6 +27,7 @@ import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
 import com.example.onboarding.presentation.action.OnboardingAction
+import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -40,11 +41,21 @@ fun OnboardingInformativeScreen(
     navController: NavController
 ){
     val state by viewModel.state.collectAsState()
+    val effect = viewModel.effect.collectAsState()
     val sendAction = viewModel::sendAction
-    val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
 
+    val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
     val pagerState = rememberPagerState(initialPage = state.uiModel.currentStep, pageCount = { images.size  })
     val coroutineScope = rememberCoroutineScope()
+
+    LaunchedEffect(effect.value) {
+        when (effect.value) {
+            OnboardingEffect.GoToLoginScreen -> {
+                navController.navigate("onboardingLogin")
+            }
+            else -> Unit
+        }
+    }
 
     LaunchedEffect(state) {
         val currentStep = state.uiModel.currentStep
@@ -86,8 +97,8 @@ fun OnboardingInformativeScreen(
                     style = ButtonStyle.Primary,
                     onClick = {
                         val next = pagerState.currentPage + 1
+                        sendAction(OnboardingAction.Action.NavigateStep(next))
                         if (next < images.size) {
-                            sendAction(OnboardingAction.Action.NavigateStep(next))
                             coroutineScope.launch {
                                 pagerState.animateScrollToPage(next)
                             }

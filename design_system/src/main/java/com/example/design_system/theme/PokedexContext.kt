@@ -31,6 +31,7 @@ interface PokedexContext {
     val groundButton: Color
     val poisonButton: Color
     val flyingButton: Color
-    val disableButton : Color
+    val disableButton: Color
+    val linkColor: Color
     val padding: Spacing
 }

@@ -297,6 +297,9 @@ object PokedexTheme {
     val padding: Spacing
         @Composable
         get() = LocalSpacingInset.current
+    val linkColor: Color
+        @Composable
+        get() = LocalLinkColor.current
 }
 
 fun PokedexColorScheme.toColorScheme(): ColorScheme {

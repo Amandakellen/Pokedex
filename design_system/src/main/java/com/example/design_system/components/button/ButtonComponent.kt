@@ -147,7 +147,8 @@ fun ButtonComponent(
         ) {
             Text(
                 text = label,
-                style = TextStyle(fontSize = style.textSize)
+                style = TextStyle(fontSize = style.textSize),
+                fontWeight = style.fontWeight,
             )
         }
     }

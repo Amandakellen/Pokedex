@@ -19,6 +19,7 @@ import com.example.design_system.theme.colors.ghostButtonDark
 import com.example.design_system.theme.colors.grassButtonDark
 import com.example.design_system.theme.colors.groundButtonDark
 import com.example.design_system.theme.colors.iceButtonDark
+import com.example.design_system.theme.colors.linkColorDark
 import com.example.design_system.theme.colors.metalButtonDark
 import com.example.design_system.theme.colors.normalButtonDark
 import com.example.design_system.theme.colors.onPrimaryDarkHighContrast
@@ -58,6 +59,7 @@ object PokedexContextDark : PokedexContext {
     override val poisonButton = poisonButtonDark
     override val flyingButton = flyingButtonDark
     override val disableButton = disableButtonDark
+    override val linkColor = linkColorDark
     override val padding =  Spacing()
 
 }

@@ -5,6 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.features.onboarding.presentation.OnboardingHomeScreen
+import com.example.onboarding.presentation.view.OnboardingScreen
 import com.example.onboarding.presentation.view.informative.OnboardingInformativeScreen
 
 fun NavGraphBuilder.OnboardingNavigation(navController: NavController) {
@@ -14,6 +15,9 @@ fun NavGraphBuilder.OnboardingNavigation(navController: NavController) {
         }
         composable("onboardingInformative") {
             OnboardingInformativeScreen(navController = navController)
+        }
+        composable("onboardingLogin") {
+            OnboardingScreen(navController = navController)
         }
     }
 

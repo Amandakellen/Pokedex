@@ -33,3 +33,4 @@ val LocalPoisonButton = staticCompositionLocalOf { PokedexContextLight.poisonBut
 val LocalFlyingButton = staticCompositionLocalOf { PokedexContextLight.flyingButton }
 val LocalDisableButton = staticCompositionLocalOf { PokedexContextLight.disableButton }
 val LocalSpacingInset = staticCompositionLocalOf { Spacing() }
+val LocalLinkColor = staticCompositionLocalOf { PokedexContextLight.linkColor }
