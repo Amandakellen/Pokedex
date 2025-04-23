@@ -60,7 +60,7 @@ fun OnboardingInformativeScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 HorizontalPager(
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier.weight(1f).align(Alignment.CenterHorizontally),
                     state = pagerState,
                     userScrollEnabled = false
                 ) { page ->
@@ -111,7 +111,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
         Text(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(PokedexTheme.padding.medium),
+                .padding(PokedexTheme.padding.small),
             text = if(page == 0) {
                 stringResource(R.string.informative_fisrt_screen_title)
             } else stringResource(R.string.informative_second_screen_title),
@@ -123,7 +123,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
         Text(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(PokedexTheme.padding.medium),
+                .padding(PokedexTheme.padding.small),
             text = if(page == 0) {
                 stringResource(R.string.informative_fisrt_screen_subtitle)
             } else stringResource(R.string.informative_second_screen_subtitle),
