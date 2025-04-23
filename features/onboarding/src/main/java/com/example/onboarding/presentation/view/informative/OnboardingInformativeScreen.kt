@@ -16,6 +16,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -27,6 +28,7 @@ import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
 import com.example.onboarding.presentation.action.OnboardingAction
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 const val PAGER_SIZE = 2
@@ -42,6 +44,7 @@ fun OnboardingInformativeScreen(
     val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
 
     val pagerState = rememberPagerState(initialPage = state.uiModel.currentStep, pageCount = { images.size  })
+    val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(state) {
         val currentStep = state.uiModel.currentStep
@@ -61,7 +64,7 @@ fun OnboardingInformativeScreen(
                 HorizontalPager(
                     modifier = Modifier.weight(1f).align(Alignment.CenterHorizontally),
                     state = pagerState,
-                    userScrollEnabled = false
+                    userScrollEnabled = true
                 ) { page ->
                     OnboardingInformativeStepScreen(images[page], page)
                 }
@@ -85,6 +88,9 @@ fun OnboardingInformativeScreen(
                         val next = pagerState.currentPage + 1
                         if (next < images.size) {
                             sendAction(OnboardingAction.Action.NavigateStep(next))
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(next)
+                            }
                         }
                     }
                 )
