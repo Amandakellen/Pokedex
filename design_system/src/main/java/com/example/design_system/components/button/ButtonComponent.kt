@@ -138,10 +138,10 @@ fun ButtonComponent(
     ) {
         Button(
             onClick = onClick,
-            shape = RoundedCornerShape(PokedexTheme.padding.medium),
+            shape = RoundedCornerShape(PokedexTheme.padding.superLarge),
             modifier = modifier
                 .fillMaxWidth()
-                .padding(PokedexTheme.padding.medium)
+                .padding(horizontal = PokedexTheme.padding.medium, vertical = PokedexTheme.padding.small)
                 .height(PokedexTheme.padding.superLarge),
             colors = buttonColors
         ) {
