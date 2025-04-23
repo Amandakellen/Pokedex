@@ -100,7 +100,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
         Spacer(modifier = Modifier.height(PokedexTheme.padding.superLarge))
         Image(
             modifier = Modifier
-                .weight(2f)
+                .weight(3f)
                 .fillMaxWidth(),
             painter = painterResource(id = imageRes),
             contentDescription = null
