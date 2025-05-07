@@ -1,5 +1,5 @@
 [versions]
-agp = "8.8.0"
+agp = "8.3.0"
 compiler = "1.5.15"
 koinAndroid = "3.5.6"
 koinAndroidxCompose = "3.4.5"
