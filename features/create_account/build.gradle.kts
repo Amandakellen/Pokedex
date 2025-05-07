@@ -60,5 +60,9 @@ dependencies {
     //compose
     implementation(libs.androidx.foundation)
 
+    //Firebase
+    implementation(libs.firebase.auth)
+
+
 
 }

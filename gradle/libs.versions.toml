@@ -1,6 +1,8 @@
 [versions]
 agp = "8.3.0"
 compiler = "1.5.15"
+firebaseAuth = "23.2.0"
+firebaseBom = "33.13.0"
 koinAndroid = "3.5.6"
 koinAndroidxCompose = "3.4.5"
 koinAndroidxComposeVersion = "3.5.0"
@@ -41,6 +43,9 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 androidx-navigation-compose-v260 = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
 androidx-ui-text-google-fonts = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 androidx-ui-text-google-fonts-v175 = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "uiTextGoogleFontsVersion" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuth" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
