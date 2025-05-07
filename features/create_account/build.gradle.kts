@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.features"
+    namespace = "com.example.create_account"
     compileSdk = 35
 
     defaultConfig {
@@ -40,16 +40,25 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.foundation.android)
+    implementation(libs.androidx.material3.android)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+    //Project
+    implementation(project(":design_system"))
 
     // Koin
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose.v350)
 
-    //Project
-    implementation(project(":features:onboarding"))
-    implementation(project(":features:create_account"))
+    //Navigation
+    implementation(libs.androidx.navigation.compose.v260)
 
-    // Navigation
-    implementation(libs.androidx.navigation.compose)
+    //compose
+    implementation(libs.androidx.foundation)
+
+
 }
