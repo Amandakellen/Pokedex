@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- home -->
+    <string name="create_account_home_title">Falta pouco para explorar esse mundo!</string>
+    <string name="create_account_home_subtitle">Como deseja se conectar?</string>
+    <string name="create_account_home_email_button">Como deseja se conectar?</string>
+    <string name="create_account_home_google_button">Continuar com o Google</string>
+    <string name="create_account_tool_bar_title">Criar conta</string>
+
+    <!-- create account -->
+    <string name="create_account_continue_button">Continuar</string>
+    <!-- email -->
+    <string name="create_account_email_title">Vamos começar!</string>
+    <string name="create_account_email_subtitle">Qual é o seu e-mail?</string>
+    <string name="create_account_email_hint_subtitle">E-mail</string>
+    <string name="create_account_invalid_email">Use um endereço de e-mail válido.</string>
+    <!-- password -->
+    <string name="create_account_password_title">Agora...</string>
+    <string name="create_account_password_subtitle">Crie uma senha</string>
+    <string name="create_account_password_hint_subtitle">Senha</string>
+    <string name="create_account_invalid_password">Sua senha deve ter pelo menos 8 caracteres</string>
+    <!-- name -->
+    <string name="create_account_name_title">Pra finalizar</string>
+    <string name="create_account_name_subtitle">Qual é o seu nome?</string>
+    <string name="create_account_name_hint_subtitle">Nome</string>
+    <string name="create_account_name_information">Esse será seu nome de usuário no aplicativo.</string>
+    <string name="create_account_invalid_name">Seu nome deve conter pelo menos 3 caracteres</string>
+
+
+
+
+</resources>
