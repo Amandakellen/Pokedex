@@ -1,12 +1,15 @@
 package com.example.create_account.di
 
 import com.example.create_account.data.datasource.remote.FirebaseAuthDataSource
-import com.example.create_account.data.repository.AuthRepository
+import com.example.create_account.data.repository.AuthRepositoryImpl
+import com.example.create_account.domain.repository.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
+import org.koin.core.module.dsl.factoryOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val createAccountModule = module{
     single { FirebaseAuth.getInstance() }
     single{ FirebaseAuthDataSource(get()) }
-    factory { AuthRepository(get()) }
+    factoryOf(::AuthRepositoryImpl) bind AuthRepository::class
 }
