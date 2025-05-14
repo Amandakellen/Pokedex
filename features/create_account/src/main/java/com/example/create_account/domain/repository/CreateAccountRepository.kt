@@ -1,5 +1,5 @@
 package com.example.create_account.domain.repository
 
-interface AuthRepository {
+interface CreateAccountRepository {
     suspend fun registerWithEmail(email: String, password: String): Result<Unit>
 }

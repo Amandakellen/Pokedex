@@ -1,11 +1,11 @@
 package com.example.create_account.data.repository
 
 import com.example.create_account.data.datasource.remote.FirebaseAuthDataSource
-import com.example.create_account.domain.repository.AuthRepository
+import com.example.create_account.domain.repository.CreateAccountRepository
 
-class AuthRepositoryImpl(
+class CreateAccountRepositoryImpl(
     private val authDataSource: FirebaseAuthDataSource
-): AuthRepository {
+): CreateAccountRepository {
 
     override suspend fun registerWithEmail(email: String, password: String): Result<Unit> {
         return authDataSource.register(email, password)
