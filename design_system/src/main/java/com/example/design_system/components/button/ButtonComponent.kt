@@ -121,8 +121,8 @@ fun AirButtonsDarkPreview() {
 
 @Composable
 fun ButtonComponent(
-    label: String,
     modifier: Modifier = Modifier,
+    label: String,
     style: ButtonStyle,
     onClick: () -> Unit
 ) {
@@ -131,18 +131,12 @@ fun ButtonComponent(
         contentColor = style.textColor
     )
 
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
-        modifier = modifier.fillMaxWidth()
-    ) {
+
         Button(
+            modifier = modifier
+                .fillMaxWidth(),
             onClick = onClick,
             shape = RoundedCornerShape(PokedexTheme.padding.superLarge),
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(horizontal = PokedexTheme.padding.medium, vertical = PokedexTheme.padding.small)
-                .height(PokedexTheme.padding.superLarge),
             colors = buttonColors
         ) {
             Text(
@@ -151,5 +145,5 @@ fun ButtonComponent(
                 fontWeight = style.fontWeight,
             )
         }
-    }
+
 }
