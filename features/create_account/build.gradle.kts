@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -9,7 +10,6 @@ android {
 
     defaultConfig {
         minSdk = 24
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -23,6 +23,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -30,39 +31,35 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.foundation.android)
-    implementation(libs.androidx.material3.android)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 
-    //Project
-    implementation(project(":design_system"))
+    // Compose
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.material3.android)
+
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose.v260)
 
     // Koin
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose.v350)
 
-    //Navigation
-    implementation(libs.androidx.navigation.compose.v260)
-
-    //compose
-    implementation(libs.androidx.foundation)
-
-    //Firebase
+    // Firebase
     implementation(libs.firebase.auth)
 
-
-
+    // Projeto
+    implementation(project(":design_system"))
 }

@@ -68,8 +68,9 @@ dependencies {
 
     //Project
     implementation(project(":features"))
-    implementation(project(":features:onboarding"))
     implementation(project(":design_system"))
+    implementation(project(":features:onboarding"))
+    implementation(project(":features:create_account"))
 
     //Firebase
     implementation(libs.firebase.bom)

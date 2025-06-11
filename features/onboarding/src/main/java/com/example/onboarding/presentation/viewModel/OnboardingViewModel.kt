@@ -7,6 +7,7 @@ import com.example.onboarding.presentation.action.OnboardingAction
 import com.example.onboarding.presentation.action.OnboardingAction.*
 import com.example.onboarding.presentation.action.OnboardingAction.Action.*
 import com.example.onboarding.presentation.effect.OnboardingEffect
+import com.example.onboarding.presentation.effect.OnboardingEffect.*
 import com.example.onboarding.presentation.view.informative.FIRST_STEP
 import com.example.onboarding.presentation.view.informative.PAGER_SIZE
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,7 +22,7 @@ class OnboardingViewModel : ViewModel(), OnboardingAction {
     override fun sendAction(action: Action) {
         when (action) {
             GoToInformativeScreen -> {
-                _effect.value = OnboardingEffect.GoToOnboarding
+                _effect.value = GoToOnboarding
                 _state.value = Initial(checkNotNull(_state.value).uiModel.copy(
                     currentStep = 0))
             }
@@ -31,20 +32,20 @@ class OnboardingViewModel : ViewModel(), OnboardingAction {
                     _state.value =
                         Initial(checkNotNull(_state.value).uiModel.copy(
                             currentStep = action.step))
-                    _effect.value = OnboardingEffect.GoToStep(action.step)
+                    _effect.value = GoToStep(action.step)
                 }
                 if(action.step == PAGER_SIZE){
-                    _effect.value = OnboardingEffect.GoToLoginScreen
+                    _effect.value = GoToLoginScreen
                 }
 
             }
 
             ClickCreateAccountButton -> {
-                _effect.value = OnboardingEffect.GoToCreateAccount
+                _effect.value = GoToCreateAccount
             }
 
             ClickLoginButton -> {
-                _effect.value = OnboardingEffect.GoToLogin
+                _effect.value = GoToLogin
             }
 
             Initialize -> {

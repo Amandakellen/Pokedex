@@ -1,6 +1,7 @@
 [versions]
 agp = "8.3.0"
 compiler = "1.5.15"
+compilerVersion = "1.5.0"
 firebaseAuth = "23.2.0"
 firebaseBom = "33.13.0"
 koinAndroid = "3.5.6"
@@ -37,6 +38,7 @@ foundationAndroidVersion = "1.7.8"
 
 [libraries]
 androidx-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler" }
+androidx-compiler-v150 = { module = "androidx.compose.compiler:compiler", version.ref = "compilerVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-foundation = { module = "androidx.compose.foundation:foundation" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }

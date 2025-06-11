@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -30,6 +31,7 @@ import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
 import com.example.onboarding.presentation.action.OnboardingAction.Action.*
+import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -39,11 +41,10 @@ private const val MIN_HEIGHT = 0.1f
 
 @Composable
 fun OnboardingScreen(
-    modifier: Modifier = Modifier,
     viewModel: OnboardingViewModel = koinViewModel(),
     navController: NavController
 ) {
-    val state by viewModel.state.collectAsState()
+    val effect = viewModel.effect.collectAsState()
     val sendAction = viewModel::sendAction
 
     val configuration = LocalConfiguration.current
@@ -61,6 +62,10 @@ fun OnboardingScreen(
             vertical = PokedexTheme.padding.medium,
             horizontal = PokedexTheme.padding.superSmall
         )
+
+    LaunchedEffect(effect.value) {
+        effect.value?.let { checkEffect(it, navController) }
+    }
 
     Scaffold(
         content = {
@@ -130,6 +135,15 @@ fun OnboardingContent(modifier: Modifier = Modifier) {
             color = PokedexTheme.text
         )
         Spacer(modifier = Modifier.weight(1f))
+    }
+}
+
+fun checkEffect(effect: OnboardingEffect, navController: NavController) {
+    if(effect is OnboardingEffect.GoToLogin) {
+        //navController.navigate("create_account_home")
+    }else
+        if (effect is OnboardingEffect.GoToCreateAccount) {
+        navController.navigate("createAccountHome")
     }
 }
 

@@ -59,12 +59,8 @@ fun OnboardingInformativeScreen(
     val buttonHeight = screenHeight * MIN_HEIGHT
 
     LaunchedEffect(effect.value) {
-        when (effect.value) {
-            OnboardingEffect.GoToLoginScreen -> {
-                navController.navigate("onboardingLogin")
-            }
-
-            else -> Unit
+        if (effect.value is OnboardingEffect.GoToLoginScreen){
+            navController.navigate("onboardingLogin")
         }
     }
 
