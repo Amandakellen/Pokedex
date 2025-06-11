@@ -29,6 +29,7 @@ import com.example.design_system.components.button.ButtonStyle
 import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
+import com.example.onboarding.presentation.action.OnboardingAction.Action.*
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -76,10 +77,10 @@ fun OnboardingScreen(
                 ButtonComponent(
                     modifier = modifier,
                     label =
-                        stringResource(R.string.informative_fisrt_screen_continue_button),
+                        stringResource(R.string.onboarding_screen_login_button),
                     style = ButtonStyle.Primary,
                     onClick = {
-
+                        sendAction(ClickLoginButton)
                     }
                 )
 
@@ -89,7 +90,7 @@ fun OnboardingScreen(
                         stringResource(R.string.onboarding_screen_create_account_button),
                     style = ButtonStyle.Secondary,
                     onClick = {
-
+                        sendAction(ClickCreateAccountButton)
                     }
                 )
             }
