@@ -14,75 +14,32 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.example.design_system.theme.PokedexTheme
 import com.example.design_system.theme.dark_themes.PokedexContextDark
 import com.example.design_system.theme.light_theme.PokedexContextLight
 
-@Preview(name = "General Light Buttons", showBackground = true)
+@PreviewLightDark
 @Composable
-fun GeneralButtonsLightPreview() {
-    PokedexTheme(context = PokedexContextLight) {
-        Column{
-            ButtonComponent(label = "Primary", style = ButtonStyle.Primary, onClick = {})
-            ButtonComponent(label = "Secondary", style = ButtonStyle.Secondary, onClick = {})
-            ButtonComponent(label = "AllTypes", style = ButtonStyle.AllTypes, onClick = {})
-        }
-
-    }
-}
-
-@Preview(name = "Earth Light Buttons", showBackground = true)
-@Composable
-fun EarthButtonsPreview() {
-    Column {
-        ButtonComponent(label = "Ground", style = ButtonStyle.Ground, onClick = {})
-        ButtonComponent(label = "Rock", style = ButtonStyle.Rock, onClick = {})
-        ButtonComponent(label = "Poison", style = ButtonStyle.Poison, onClick = {})
-        ButtonComponent(label = "Steel", style = ButtonStyle.Metal, onClick = {})
-        ButtonComponent(label = "Fighting", style = ButtonStyle.Fighting, onClick = {})
-    }
-}
-
-@Preview(name = "Water Light Buttons", showBackground = true)
-@Composable
-fun WaterButtonsLightPreview() {
-    Column {
-        ButtonComponent(label = "Water", style = ButtonStyle.Watter, onClick = {})
-        ButtonComponent(label = "Ice", style = ButtonStyle.Ice, onClick = {})
-        ButtonComponent(label = "Bug", style = ButtonStyle.Bug, onClick = {})
-    }
-}
-
-@Preview(name = "Air Light Buttons", showBackground = true)
-@Composable
-fun AirButtonsLightPreview() {
-    Column {
-        ButtonComponent(label = "Flying", style = ButtonStyle.Flying, onClick = {})
-        ButtonComponent(label = "Dragon", style = ButtonStyle.Dragon, onClick = {})
-        ButtonComponent(label = "Fairy", style = ButtonStyle.Fairy, onClick = {})
-        ButtonComponent(label = "Psychic", style = ButtonStyle.Psychic, onClick = {})
-    }
-}
-
-@Preview(name = "General Dark Buttons", showBackground = true, backgroundColor = 0xFF121212)
-@Composable
-fun GeneralButtonsDarkPreview() {
-    PokedexTheme(context = PokedexContextDark) {
+fun GeneralButtonsPreview() {
+    PokedexTheme {
         Column {
             ButtonComponent(label = "Primary", style = ButtonStyle.Primary, onClick = {})
             ButtonComponent(label = "Secondary", style = ButtonStyle.Secondary, onClick = {})
             ButtonComponent(label = "AllTypes", style = ButtonStyle.AllTypes, onClick = {})
         }
+
     }
 }
 
-@Preview(name = "Earth Dark Buttons", showBackground = true, backgroundColor = 0xFF121212)
+@PreviewLightDark
 @Composable
-fun EarthButtonsDarkPreview() {
-    PokedexTheme(context = PokedexContextDark) {
+fun EarthButtonsPreview() {
+    PokedexTheme {
         Column {
             ButtonComponent(label = "Ground", style = ButtonStyle.Ground, onClick = {})
             ButtonComponent(label = "Rock", style = ButtonStyle.Rock, onClick = {})
@@ -93,10 +50,10 @@ fun EarthButtonsDarkPreview() {
     }
 }
 
-@Preview(name = "Watter Dark Buttons", showBackground = true, backgroundColor = 0xFF121212)
+@PreviewLightDark
 @Composable
-fun WaterButtonsDarkPreview() {
-    PokedexTheme(context = PokedexContextDark) {
+fun WaterButtonsPreview() {
+    PokedexTheme {
         Column {
             ButtonComponent(label = "Water", style = ButtonStyle.Watter, onClick = {})
             ButtonComponent(label = "Ice", style = ButtonStyle.Ice, onClick = {})
@@ -105,15 +62,28 @@ fun WaterButtonsDarkPreview() {
     }
 }
 
-@Preview(name = "Air Dark Buttons", showBackground = true, backgroundColor = 0xFF121212)
+@PreviewLightDark
 @Composable
-fun AirButtonsDarkPreview() {
-    PokedexTheme(context = PokedexContextDark) {
+fun AirButtonsPreview() {
+    PokedexTheme {
         Column {
             ButtonComponent(label = "Flying", style = ButtonStyle.Flying, onClick = {})
             ButtonComponent(label = "Dragon", style = ButtonStyle.Dragon, onClick = {})
             ButtonComponent(label = "Fairy", style = ButtonStyle.Fairy, onClick = {})
             ButtonComponent(label = "Psychic", style = ButtonStyle.Psychic, onClick = {})
+        }
+    }
+}
+
+@PreviewLightDark
+@Composable
+fun IconButtonsPreview() {
+    PokedexTheme {
+        Column {
+            ButtonComponent(
+                label = "Continuar com o google",
+                style = ButtonStyle.Secondary,
+                onClick = {})
         }
     }
 }
@@ -124,7 +94,8 @@ fun ButtonComponent(
     modifier: Modifier = Modifier,
     label: String,
     style: ButtonStyle,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    leftIcon: Int? = null,
 ) {
     val buttonColors = ButtonDefaults.buttonColors(
         containerColor = style.background,
@@ -132,18 +103,24 @@ fun ButtonComponent(
     )
 
 
-        Button(
-            modifier = modifier
-                .fillMaxWidth(),
-            onClick = onClick,
-            shape = RoundedCornerShape(PokedexTheme.padding.superLarge),
-            colors = buttonColors
-        ) {
-            Text(
-                text = label,
-                style = TextStyle(fontSize = style.textSize),
-                fontWeight = style.fontWeight,
+    Button(
+        modifier = modifier
+            .fillMaxWidth(),
+        onClick = onClick,
+        shape = RoundedCornerShape(PokedexTheme.padding.superLarge),
+        colors = buttonColors
+    ) {
+        leftIcon?.let {
+            Icon(
+                painter = painterResource(id = it),
+                contentDescription = null
             )
         }
+        Text(
+            text = label,
+            style = TextStyle(fontSize = style.textSize),
+            fontWeight = style.fontWeight,
+        )
+    }
 
 }

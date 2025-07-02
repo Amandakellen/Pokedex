@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- home -->
-    <string name="create_account_home_title">Falta pouco para explorar esse mundo!</string>
+    <string name="create_account_home_title">Falta pouco para \n explorar esse mundo!</string>
     <string name="create_account_home_subtitle">Como deseja se conectar?</string>
     <string name="create_account_home_email_button">Como deseja se conectar?</string>
     <string name="create_account_home_google_button">Continuar com o Google</string>
