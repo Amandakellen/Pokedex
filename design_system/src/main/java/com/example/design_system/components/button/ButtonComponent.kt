@@ -1,27 +1,23 @@
 package com.example.design_system.components.button
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Dp
+import com.example.design_system.R
 import com.example.design_system.theme.PokedexTheme
-import com.example.design_system.theme.dark_themes.PokedexContextDark
-import com.example.design_system.theme.light_theme.PokedexContextLight
 
 @PreviewLightDark
 @Composable
@@ -83,7 +79,9 @@ fun IconButtonsPreview() {
             ButtonComponent(
                 label = "Continuar com o google",
                 style = ButtonStyle.Secondary,
-                onClick = {})
+                onClick = {},
+                leftIcon = R.drawable.ic_pokedex_name
+            )
         }
     }
 }
@@ -96,6 +94,7 @@ fun ButtonComponent(
     style: ButtonStyle,
     onClick: () -> Unit,
     leftIcon: Int? = null,
+    iconSize: Dp = PokedexTheme.size.superLarge
 ) {
     val buttonColors = ButtonDefaults.buttonColors(
         containerColor = style.background,
@@ -110,17 +109,36 @@ fun ButtonComponent(
         shape = RoundedCornerShape(PokedexTheme.padding.superLarge),
         colors = buttonColors
     ) {
-        leftIcon?.let {
-            Icon(
-                painter = painterResource(id = it),
-                contentDescription = null
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = if (leftIcon != null) {
+                Arrangement.SpaceBetween
+            } else {
+                Arrangement.Center
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            leftIcon?.let {
+                Icon(
+                    modifier = Modifier
+                        .padding(start = PokedexTheme.padding.medium)
+                        .align(Alignment.CenterVertically)
+                        .size(iconSize),
+                    painter = painterResource(id = it),
+                    contentDescription = null,
+                )
+            }
+            Text(
+                modifier = Modifier
+                    .padding(horizontal = PokedexTheme.padding.medium)
+                    .weight(0.5f)
+                    .align(Alignment.CenterVertically),
+                textAlign = TextAlign.Center,
+                text = label,
+                style = TextStyle(fontSize = style.textSize),
+                fontWeight = style.fontWeight,
             )
         }
-        Text(
-            text = label,
-            style = TextStyle(fontSize = style.textSize),
-            fontWeight = style.fontWeight,
-        )
     }
 
 }
