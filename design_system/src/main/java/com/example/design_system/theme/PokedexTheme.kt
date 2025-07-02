@@ -3,15 +3,14 @@ package com.example.design_system.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.Dp
-import com.example.design_system.data.Spacing
+import com.example.design_system.data.Padding
+import com.example.design_system.data.Size
 import com.example.design_system.theme.colors.allTypesButtonDark
 import com.example.design_system.theme.colors.allTypesButtonLight
 import com.example.design_system.theme.colors.bugButtonDark
@@ -45,7 +44,6 @@ import com.example.design_system.theme.colors.onPrimaryLightHighContrast
 import com.example.design_system.theme.colors.onSecondaryLight
 import com.example.design_system.theme.colors.scrimLight
 import com.example.design_system.theme.colors.surfaceContainerDark
-import com.example.design_system.theme.colors.surfaceContainerLight
 import com.example.design_system.theme.colors.surfaceDark
 import com.example.design_system.theme.colors.surfaceLight
 import com.example.design_system.theme.colors.watterButtonDark
@@ -148,7 +146,8 @@ fun PokedexTheme(
         LocalPoisonButton provides context.poisonButton,
         LocalFlyingButton provides context.flyingButton,
         LocalDisableButton provides context.disableButton,
-        LocalSpacingInset provides context.padding
+        LocalSpacingInset provides context.padding,
+        LocalSize provides context.size
 
     ) {
         val colors = PokedexColorScheme(
@@ -294,12 +293,18 @@ object PokedexTheme {
         @Composable
         get() = onSecondaryLight
 
-    val padding: Spacing
+    val padding: Padding
         @Composable
         get() = LocalSpacingInset.current
+
     val linkColor: Color
         @Composable
         get() = LocalLinkColor.current
+
+    val size: Size
+        @Composable
+        get() = LocalSize.current
+
 }
 
 fun PokedexColorScheme.toColorScheme(): ColorScheme {

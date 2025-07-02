@@ -1,8 +1,8 @@
 package com.example.design_system.theme.light_theme
 
 import androidx.compose.runtime.Immutable
-import androidx.compose.ui.graphics.Color
-import com.example.design_system.data.Spacing
+import com.example.design_system.data.Padding
+import com.example.design_system.data.Size
 import com.example.design_system.theme.PokedexContext
 import com.example.design_system.theme.colors.allTypesButtonLight
 import com.example.design_system.theme.colors.bugButtonLight
@@ -19,7 +19,6 @@ import com.example.design_system.theme.colors.ghostButtonLight
 import com.example.design_system.theme.colors.grassButtonLight
 import com.example.design_system.theme.colors.groundButtonLight
 import com.example.design_system.theme.colors.iceButtonLight
-import com.example.design_system.theme.colors.linkColorDark
 import com.example.design_system.theme.colors.linkColorLight
 import com.example.design_system.theme.colors.metalButtonLight
 import com.example.design_system.theme.colors.normalButtonLight
@@ -61,5 +60,6 @@ object PokedexContextLight : PokedexContext {
     override val flyingButton = flyingButtonLight
     override val disableButton = disableButtonLight
     override val linkColor = linkColorLight
-    override val padding =  Spacing()
+    override val padding =  Padding()
+    override val size = Size()
 }
