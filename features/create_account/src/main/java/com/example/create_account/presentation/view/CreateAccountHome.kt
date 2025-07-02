@@ -23,6 +23,7 @@ import com.example.design_system.theme.PokedexTheme
 
 @Composable
 internal fun CreateAccountHome(navController: NavController) {
+    PokedexTheme{
     Scaffold(
         topBar = {
             ToolBar(
@@ -45,7 +46,7 @@ internal fun CreateAccountHome(navController: NavController) {
                 )
             }
         }
-    )
+    )}
 }
 
 @Composable
