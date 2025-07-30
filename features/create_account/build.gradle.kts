@@ -63,5 +63,5 @@ dependencies {
 
     // Projeto
     implementation(project(":design_system"))
-    implementation(project(":domain:coroutines"))
+    implementation(project(":infrastructure:domain:coroutines"))
 }
