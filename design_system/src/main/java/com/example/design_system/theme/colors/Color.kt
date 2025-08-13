@@ -38,7 +38,7 @@ val fightingButtonLight = Color(0xFF8D4959)
 val normalButtonLight = Color(0xFF226488)
 val darkButtonLight = Color(0xFF66558E)
 val customColor1Light = Color(0xFF5B5891)
-val disableButtonLight  = Color(0xFFD3D3D3)
+val disableLight  = Color(0xFFD3D3D3)
 val linkColorLight = Color(0xFF0038A8)
 
 //Buttons
@@ -62,7 +62,7 @@ val fightingButtonDark = Color(0xFFFFB1C0)
 val normalButtonDark = Color(0xFF92CEF6)
 val darkButtonDark = Color(0xFFD1BCFE)
 val customColor1Dark = Color(0xFFC4C0FF)
-val disableButtonDark  = Color(0xFFB0B0B0)
+val disableDark  = Color(0xFFB0B0B0)
 val linkColorDark =  Color(0xFF7AB8FF)
 
 

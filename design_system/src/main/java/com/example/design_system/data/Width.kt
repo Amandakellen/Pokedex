@@ -3,7 +3,7 @@ package com.example.design_system.data
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-data class Padding(
+data class Width(
     val tiny: Dp = 1.dp,
     val extraSmall: Dp = 2.dp,
     val superSmall: Dp = 4.dp,

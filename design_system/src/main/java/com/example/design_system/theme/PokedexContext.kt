@@ -4,6 +4,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import com.example.design_system.data.Padding
 import com.example.design_system.data.Size
+import com.example.design_system.data.Width
 
 @Immutable
 interface PokedexContext {
@@ -36,4 +37,6 @@ interface PokedexContext {
     val linkColor: Color
     val padding: Padding
     val size: Size
+    val width: Width
+    val strokeColor: Color
 }

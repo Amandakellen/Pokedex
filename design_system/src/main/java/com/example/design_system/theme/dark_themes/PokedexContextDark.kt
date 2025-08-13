@@ -3,12 +3,14 @@ package com.example.design_system.theme.dark_themes
 import androidx.compose.runtime.Immutable
 import com.example.design_system.data.Padding
 import com.example.design_system.data.Size
+import com.example.design_system.data.Width
 import com.example.design_system.theme.PokedexContext
 import com.example.design_system.theme.colors.allTypesButtonDark
 import com.example.design_system.theme.colors.bugButtonDark
 import com.example.design_system.theme.colors.customColor1Dark
 import com.example.design_system.theme.colors.darkButtonDark
-import com.example.design_system.theme.colors.disableButtonDark
+import com.example.design_system.theme.colors.disableDark
+import com.example.design_system.theme.colors.disableLight
 import com.example.design_system.theme.colors.dragonButtonDark
 import com.example.design_system.theme.colors.eletricButtonDark
 import com.example.design_system.theme.colors.fairyButtonDark
@@ -58,9 +60,11 @@ object PokedexContextDark : PokedexContext {
     override val groundButton = groundButtonDark
     override val poisonButton = poisonButtonDark
     override val flyingButton = flyingButtonDark
-    override val disableButton = disableButtonDark
+    override val disableButton = disableDark
     override val linkColor = linkColorDark
     override val padding =  Padding()
     override val size = Size()
+    override val width =  Width()
+    override val strokeColor =  disableDark
 
 }

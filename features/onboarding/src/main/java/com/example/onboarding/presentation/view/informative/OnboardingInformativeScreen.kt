@@ -24,6 +24,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.design_system.components.button.ButtonComponent
 import com.example.design_system.components.button.ButtonStyle
+import com.example.design_system.components.button.buttonSize
 import com.example.design_system.components.contentcontrol.ContentControl
 import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
@@ -36,9 +37,6 @@ import org.koin.androidx.compose.koinViewModel
 
 const val PAGER_SIZE = 2
 const val FIRST_STEP = 0
-private const val MIN_WIDTH = 0.7f
-private const val MAX_WIDTH = 0.90f
-private const val MIN_HEIGHT = 0.1f
 
 @Composable
 fun OnboardingInformativeScreen(
@@ -53,10 +51,6 @@ fun OnboardingInformativeScreen(
     val pagerState =
         rememberPagerState(initialPage = state.uiModel.currentStep, pageCount = { images.size })
     val coroutineScope = rememberCoroutineScope()
-
-    val configuration = LocalConfiguration.current
-    val screenHeight = configuration.screenHeightDp.dp
-    val buttonHeight = screenHeight * MIN_HEIGHT
 
     LaunchedEffect(effect.value) {
         if (effect.value is OnboardingEffect.GoToLoginScreen){
@@ -98,17 +92,7 @@ fun OnboardingInformativeScreen(
                 )
 
                 ButtonComponent(
-                    modifier = Modifier
-                        .height(buttonHeight)
-                        .wrapContentWidth()
-                        .widthIn(
-                            min = LocalConfiguration.current.screenWidthDp.dp * MIN_WIDTH,
-                            max = LocalConfiguration.current.screenWidthDp.dp * MAX_WIDTH
-                        )
-                        .padding(
-                            vertical = PokedexTheme.padding.medium,
-                            horizontal = PokedexTheme.padding.superSmall
-                        ),
+                    modifier = Modifier.buttonSize(),
                     label = if (pagerState.currentPage == FIRST_STEP) {
                         stringResource(R.string.informative_fisrt_screen_continue_button)
                     } else {

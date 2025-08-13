@@ -3,6 +3,8 @@ package com.example.design_system.theme
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.example.design_system.data.Padding
 import com.example.design_system.data.Size
+import com.example.design_system.data.Width
+import com.example.design_system.theme.colors.disableLight
 import com.example.design_system.theme.light_theme.PokedexContextLight
 
 val LocalWatterButton = staticCompositionLocalOf { PokedexContextLight.watterButton}
@@ -34,3 +36,7 @@ val LocalDisableButton = staticCompositionLocalOf { PokedexContextLight.disableB
 val LocalSpacingInset = staticCompositionLocalOf { Padding() }
 val LocalLinkColor = staticCompositionLocalOf { PokedexContextLight.linkColor }
 val LocalSize = staticCompositionLocalOf { Size() }
+
+val LocalWidth = staticCompositionLocalOf { Width() }
+
+val LocalStrokeColor = staticCompositionLocalOf { PokedexContextLight.strokeColor }

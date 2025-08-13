@@ -11,6 +11,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import com.example.design_system.data.Padding
 import com.example.design_system.data.Size
+import com.example.design_system.data.Width
 import com.example.design_system.theme.colors.allTypesButtonDark
 import com.example.design_system.theme.colors.allTypesButtonLight
 import com.example.design_system.theme.colors.bugButtonDark
@@ -19,8 +20,8 @@ import com.example.design_system.theme.colors.customColor1Dark
 import com.example.design_system.theme.colors.customColor1Light
 import com.example.design_system.theme.colors.darkButtonDark
 import com.example.design_system.theme.colors.darkButtonLight
-import com.example.design_system.theme.colors.disableButtonDark
-import com.example.design_system.theme.colors.disableButtonLight
+import com.example.design_system.theme.colors.disableDark
+import com.example.design_system.theme.colors.disableLight
 import com.example.design_system.theme.colors.dragonButtonDark
 import com.example.design_system.theme.colors.dragonButtonLight
 import com.example.design_system.theme.colors.eletricButtonDark
@@ -91,7 +92,7 @@ val extendedLight = PokedexColorScheme(
     customColor1 = customColor1Light,
     background = onPrimaryLightHighContrast,
     text = surfaceContainerDark,
-    disableButton =  disableButtonLight
+    disableButton =  disableLight
 )
 
 val extendedDark = PokedexColorScheme(
@@ -111,7 +112,7 @@ val extendedDark = PokedexColorScheme(
     customColor1 = customColor1Dark,
     background = onPrimaryDarkHighContrast,
     text = surfaceContainerDark,
-    disableButton =  disableButtonDark
+    disableButton =  disableDark
 )
 
 @Composable
@@ -147,7 +148,9 @@ fun PokedexTheme(
         LocalFlyingButton provides context.flyingButton,
         LocalDisableButton provides context.disableButton,
         LocalSpacingInset provides context.padding,
-        LocalSize provides context.size
+        LocalSize provides context.size,
+        LocalWidth provides context.width,
+        LocalStrokeColor provides context.strokeColor,
 
     ) {
         val colors = PokedexColorScheme(
@@ -304,6 +307,14 @@ object PokedexTheme {
     val size: Size
         @Composable
         get() = LocalSize.current
+
+    val width : Width
+        @Composable
+        get() = LocalWidth.current
+
+    val strokeColor
+        @Composable
+        get() = LocalStrokeColor.current
 
 }
 
