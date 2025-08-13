@@ -21,33 +21,34 @@ import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 
 @Composable
-fun ToolBar(modifier: Modifier =  Modifier, title: String, onBackPressed:()-> Unit) {
+fun ToolBar(
+    modifier: Modifier = Modifier,
+    title: String,
+    onBackPressed: () -> Unit
+) {
     Box(
-        modifier = modifier.background(PokedexTheme.background).statusBarsPadding(),
-    ){
-        Row(modifier = Modifier) {
-            Box(
-                modifier = Modifier
-                    .padding(PokedexTheme.padding.medium)
-                    .clickable(onClick = onBackPressed)
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.arrow_black),
-                    contentDescription = "Back",
-                    tint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
-                )
-            }
+        modifier = modifier
+            .background(PokedexTheme.background)
+            .statusBarsPadding()
+            .fillMaxWidth()
+    ) {
+        Icon(
+            painter = painterResource(id = R.drawable.arrow_black),
+            contentDescription = "Back",
+            tint = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .padding(PokedexTheme.padding.medium)
+                .clickable(onClick = onBackPressed)
+        )
 
-            Text(
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .fillMaxWidth(),
-                text = title,
-                style = AppTypography.headlineSmall,
-                textAlign = TextAlign.Center,
-                color = PokedexTheme.text
-            )
-        }
+        Text(
+            text = title,
+            style = AppTypography.headlineSmall,
+            textAlign = TextAlign.Center,
+            color = PokedexTheme.text,
+            modifier = Modifier.align(Alignment.Center)
+        )
     }
 }
 
