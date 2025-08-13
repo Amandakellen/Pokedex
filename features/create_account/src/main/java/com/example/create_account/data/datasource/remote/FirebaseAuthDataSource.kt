@@ -14,7 +14,7 @@ class FirebaseAuthDataSource(private val firebaseAuth: FirebaseAuth) {
         }
     }
 
-    suspend fun setName(name: String): Result<Unit> {
+    suspend fun setUserName(name: String): Result<Unit> {
         return try {
             val user = firebaseAuth.currentUser
             val profileUpdates = userProfileChangeRequest {

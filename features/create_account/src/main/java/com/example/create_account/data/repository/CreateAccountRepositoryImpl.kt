@@ -12,6 +12,6 @@ class CreateAccountRepositoryImpl(
     }
 
     override suspend fun setUserName(name: String): Result<Unit> {
-        return authDataSource.setName(name)
+        return authDataSource.setUserName(name)
     }
 }
