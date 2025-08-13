@@ -10,4 +10,8 @@ class CreateAccountRepositoryImpl(
     override suspend fun registerWithEmail(email: String, password: String): Result<Unit> {
         return authDataSource.register(email, password)
     }
+
+    override suspend fun setUserName(name: String): Result<Unit> {
+        return authDataSource.setName(name)
+    }
 }
