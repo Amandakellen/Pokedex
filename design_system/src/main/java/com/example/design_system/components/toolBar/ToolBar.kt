@@ -44,7 +44,7 @@ fun ToolBar(
 
         Text(
             text = title,
-            style = AppTypography.headlineSmall,
+            style = AppTypography.titleSmall,
             textAlign = TextAlign.Center,
             color = PokedexTheme.text,
             modifier = Modifier.align(Alignment.Center)
