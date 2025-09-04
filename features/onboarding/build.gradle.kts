@@ -42,7 +42,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.ui.tooling.preview.android)
-    implementation(project(":design_system"))
+    implementation(projects.designSystem)
     implementation(libs.foundation.android)
     implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)

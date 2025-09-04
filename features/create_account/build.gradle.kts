@@ -62,6 +62,6 @@ dependencies {
     implementation(libs.firebase.auth)
 
     // Projeto
-    implementation(project(":design_system"))
-    implementation(project(":infrastructure:domain:coroutines"))
+    implementation(projects.designSystem)
+    implementation(projects.infrastructure.domain.coroutines)
 }
