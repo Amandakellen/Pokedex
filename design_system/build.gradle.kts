@@ -1,62 +1,81 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.compose.multiplatform)
 }
 
-android {
-    namespace = "com.example.design_system"
-    compileSdk = 35
-
-    defaultConfig {
+kotlin {
+    androidLibrary {
+        namespace = "com.example.design_system"
+        compileSdk = 35
         minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+        
+        // Enable Android resources
+        androidResources {
+            enable = true
+        }
+        
+        // Enable device tests
+        withDeviceTest {
+            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
+        
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget("11"))
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
 
-    buildFeatures {
-        compose = true
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                // Koin Core (multiplatform)
+                implementation(libs.koin.core)
+                
+                // Compose Multiplatform (common code)
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+            }
+        }
+        
+        val androidMain by getting {
+            dependencies {
+                // Android Core
+                implementation(libs.androidx.core.ktx)
+                implementation(libs.androidx.appcompat)
+                implementation(libs.material)
+                
+                // Compose Android-specific
+                implementation(libs.androidx.ui.text.google.fonts)
+                
+                // Koin Android
+                implementation(libs.koin.androidx.compose.v350)
+                
+                // Kotlin Reflect
+                implementation(libs.kotlin.reflect)
+            }
+        }
+        
+        val commonTest by getting {
+            dependencies {
+                implementation(libs.junit)
+            }
+        }
+        
+        val androidDeviceTest by getting {
+            dependencies {
+                implementation(libs.androidx.junit)
+                implementation(libs.androidx.espresso.core)
+            }
+        }
     }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.material3.android)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation(libs.koin.androidx.compose.v350)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compiler)
-
-    //Font
-    implementation(libs.androidx.ui.text.google.fonts)
-
-    //preview
-    implementation(libs.ui.tooling.preview)
-    debugImplementation(libs.ui.tooling)
-    implementation (libs.kotlin.reflect)
+    // Compose Debug (for KMP, must be at root level)
+    debugImplementation(compose.preview)
+    debugImplementation(libs.androidx.ui.tooling)
 }
