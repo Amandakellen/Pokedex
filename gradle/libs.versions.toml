@@ -1,7 +1,10 @@
 [versions]
-agp = "8.7.3"
+agp = "8.13.0"
 compiler = "1.5.15"
 compilerVersion = "1.5.0"
+compose-multiplatform = '1.9.3'
+compose-hot-reload = '1.0.0-rc03'
+compose-material3 = '1.9.0'
 firebaseAuth = "23.2.0"
 firebaseBom = "33.13.0"
 koinAndroid = "3.5.6"
@@ -9,7 +12,7 @@ koinAndroidxCompose = "3.4.5"
 koinAndroidxComposeVersion = "3.5.0"
 koinAndroidxViewmodel = "3.3.0"
 koinCore = "3.4.2"
-kotlin = "2.0.0"
+kotlin = '2.2.20'
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -38,6 +41,7 @@ composeMaterial = "1.4.1"
 material3AndroidVersion = "1.2.1"
 foundationAndroidVersion = "1.7.8"
 uiToolingPreviewAndroidVersion = "1.8.3"
+googleServicesPlugin = '4.4.2'
 
 [libraries]
 androidx-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler" }
@@ -89,7 +93,11 @@ ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+androidMultiplatformLibrary = { id = 'com.android.kotlin.multiplatform.library', version.ref = 'agp' }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+googleServices = { id = 'com.google.gms.google-services', version.ref = 'googleServicesPlugin' }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 
