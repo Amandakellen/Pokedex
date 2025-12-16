@@ -1,0 +1,6 @@
+[
+    {
+        "merged": "com.example.shared-release-11:/drawable-v21/notification_action_background.xml",
+        "source": "com.example.shared-core-1.15.0-6:/drawable-v21/notification_action_background.xml"
+    }
+]

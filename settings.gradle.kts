@@ -13,9 +13,10 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Poekedex"
+rootProject.name = "Pokedex"
 include(":app")
 include(":features")
 include(":features:onboarding")
 include(":design_system")
 include(":features:create_account")
+include(":shared")

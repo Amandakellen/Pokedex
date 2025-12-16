@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared"
+    name=":shared"
+    type="LIBRARY"
+    maven="Pokedex:shared:unspecified"
+    agpVersion="8.13.1"
+    buildFolder="build"
+    bootClassPath="/Users/amanda.soares/Library/Android/sdk/platforms/android-35/android.jar:/Users/amanda.soares/Library/Android/sdk/build-tools/35.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="11"
+    compileTarget="android-35"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="debug"/>
+</lint-module>
