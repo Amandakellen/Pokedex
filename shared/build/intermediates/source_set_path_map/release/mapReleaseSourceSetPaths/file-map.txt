@@ -1,0 +1,18 @@
+com.example.shared-startup-runtime-1.1.1-0 /Users/amanda.soares/.gradle/caches/8.13/transforms/0c5560fc66c03bb0f92a9f3b09244691/transformed/startup-runtime-1.1.1/res
+com.example.shared-lifecycle-runtime-2.6.2-1 /Users/amanda.soares/.gradle/caches/8.13/transforms/1f1509e6fedb7a7b2bd9a54dbe2f2ed9/transformed/lifecycle-runtime-2.6.2/res
+com.example.shared-profileinstaller-1.3.0-2 /Users/amanda.soares/.gradle/caches/8.13/transforms/7ae5fdb8e88066deaa7d268c59b03158/transformed/profileinstaller-1.3.0/res
+com.example.shared-annotation-experimental-1.4.1-3 /Users/amanda.soares/.gradle/caches/8.13/transforms/9e428e46d4ab89eeb4d68f8de9fdf120/transformed/annotation-experimental-1.4.1/res
+com.example.shared-core-runtime-2.2.0-4 /Users/amanda.soares/.gradle/caches/8.13/transforms/a125950ecc6ae17a37d0b569705d8206/transformed/core-runtime-2.2.0/res
+com.example.shared-tracing-1.2.0-5 /Users/amanda.soares/.gradle/caches/8.13/transforms/cf26c2af639a4f06752fade3aef04c42/transformed/tracing-1.2.0/res
+com.example.shared-core-1.15.0-6 /Users/amanda.soares/.gradle/caches/8.13/transforms/d1149945332120ae393d3f1202a1b3cc/transformed/core-1.15.0/res
+com.example.shared-core-ktx-1.15.0-7 /Users/amanda.soares/.gradle/caches/8.13/transforms/e1f00d0aac38761ffc7309f4b38d7b2a/transformed/core-ktx-1.15.0/res
+com.example.shared-pngs-8 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/build/generated/res/pngs/release
+com.example.shared-resValues-9 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/build/generated/res/resValues/release
+com.example.shared-updated_navigation_xml-10 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/build/generated/updated_navigation_xml/release
+com.example.shared-mergeReleaseResources-11 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
+com.example.shared-mergeReleaseResources-12 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+com.example.shared-release-13 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/build/intermediates/merged_res/release/mergeReleaseResources
+com.example.shared-androidMain-14 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/src/androidMain/res
+com.example.shared-androidRelease-15 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/src/androidRelease/res
+com.example.shared-main-16 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/src/main/res
+com.example.shared-release-17 /Users/amanda.soares/Documents/Estudos/Apps /Pokedex/shared/src/release/res

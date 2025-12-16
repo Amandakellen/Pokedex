@@ -13,13 +13,10 @@ dependencyResolutionManagement {
     }
 }
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-rootProject.name = "Poekedex"
+rootProject.name = "Pokedex"
 include(":app")
 include(":features")
 include(":features:onboarding")
 include(":design_system")
 include(":features:create_account")
-include(":domain")
-include(":infrastructure:domain:coroutines")
-include(":infrastructure")
+include(":shared")
