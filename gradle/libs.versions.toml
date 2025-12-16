@@ -1,5 +1,5 @@
 [versions]
-agp = "8.13.1"
+agp = "8.7.3"
 compiler = "1.5.15"
 compilerVersion = "1.5.0"
 firebaseAuth = "23.2.0"
