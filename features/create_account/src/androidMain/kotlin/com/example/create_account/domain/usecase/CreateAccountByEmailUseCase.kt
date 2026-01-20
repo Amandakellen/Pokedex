@@ -8,8 +8,6 @@ import com.example.create_account.domain.validation.model.RegistrationValidation
 import com.example.create_account.domain.validation.model.RegistrationValidationException.InvalidEmail
 import com.example.create_account.domain.validation.model.RegistrationValidationException.NameIsBlank
 import com.example.create_account.domain.validation.model.RegistrationValidationException.PasswordTooShort
-import com.google.firebase.auth.userProfileChangeRequest
-import kotlinx.coroutines.tasks.await
 
 private const val MIN_PASSWORD_LENGTH = 8
 

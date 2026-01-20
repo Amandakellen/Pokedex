@@ -6,9 +6,7 @@ import com.example.create_account.domain.data.CreateAccountByEmailData
 import com.example.create_account.domain.usecase.CreateAccountByEmailUseCase
 import com.example.create_account.presentation.action.CreateAccountAction
 import com.example.create_account.presentation.effect.CreateAccountEffect
-import com.example.create_account.presentation.effect.CreateAccountEffect.*
 import com.example.create_account.presentation.state.CreateAccountState
-import com.example.create_account.presentation.state.CreateAccountState.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
@@ -16,7 +14,7 @@ class CreateAccountViewModel(private val createAccountByEmailUseCase: CreateAcco
     ViewModel(),
     CreateAccountAction {
 
-    private val _state = MutableStateFlow<CreateAccountState>(Resume)
+    private val _state = MutableStateFlow<CreateAccountState>(CreateAccountState.Resume)
     val state = _state
 
     private val _effect = MutableStateFlow<CreateAccountEffect?>(null)
@@ -25,7 +23,7 @@ class CreateAccountViewModel(private val createAccountByEmailUseCase: CreateAcco
     override fun sendAction(action: CreateAccountAction.Action) {
         when (action) {
             is CreateAccountAction.Action.ClickBackPress -> {
-                _effect.value = BackPress
+                _effect.value = CreateAccountEffect.BackPress
             }
 
             is CreateAccountAction.Action.ClickCreateAccountButton -> {
@@ -37,15 +35,15 @@ class CreateAccountViewModel(private val createAccountByEmailUseCase: CreateAcco
     fun checkCreateAccountStep(step: Int, email: String, name: String, password: String) {
         when (step) {
             2 -> {
-                _effect.value = GoToRegisterPassword
+                _effect.value = CreateAccountEffect.GoToRegisterPassword
             }
 
             3 -> {
-                _effect.value = GoToRegisterName
+                _effect.value = CreateAccountEffect.GoToRegisterName
             }
 
             4 -> {
-                _state.value = Loading
+                _state.value = CreateAccountState.Loading
                 createAccountByEmail(email = email, name = name, password = password)
             }
         }
@@ -61,10 +59,10 @@ class CreateAccountViewModel(private val createAccountByEmailUseCase: CreateAcco
                         name = name
                     )
                 )
-                _state.value = Success
-                _effect.value = GoToRegisterSuccess
+                _state.value = CreateAccountState.Success
+                _effect.value = CreateAccountEffect.GoToRegisterSuccess
             } catch (e: Exception) {
-                _state.value = Error
+                _state.value = CreateAccountState.Error
                 return@launch
             }
         }
