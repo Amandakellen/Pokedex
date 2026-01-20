@@ -61,8 +61,8 @@ object PokedexContextLight : PokedexContext {
     override val flyingButton = flyingButtonLight
     override val disableButton = disableLight
     override val linkColor = linkColorLight
-    override val padding =  Padding()
+    override val padding = Padding()
     override val size = Size()
-    override val width =  Width()
-    override val strokeColor =  disableLight
+    override val width = Width()
+    override val strokeColor = disableLight
 }

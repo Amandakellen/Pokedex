@@ -30,14 +30,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.design_system.R.drawable.*
-import com.example.features.onboarding.presentation.state.OnboardingState
-import com.example.onboarding.presentation.action.OnboardingAction.*
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 import androidx.compose.runtime.LaunchedEffect
 import com.example.onboarding.presentation.action.OnboardingAction.Action.*
-import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.effect.OnboardingEffect.*
 
 @Composable

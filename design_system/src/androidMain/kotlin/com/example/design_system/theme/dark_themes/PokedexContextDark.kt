@@ -61,9 +61,9 @@ object PokedexContextDark : PokedexContext {
     override val flyingButton = flyingButtonDark
     override val disableButton = disableDark
     override val linkColor = linkColorDark
-    override val padding =  Padding()
+    override val padding = Padding()
     override val size = Size()
-    override val width =  Width()
-    override val strokeColor =  disableDark
+    override val width = Width()
+    override val strokeColor = disableDark
 
 }
