@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -29,7 +30,7 @@ private const val MIN_WIDTH = 0.7f
 private const val MAX_WIDTH = 0.90f
 private const val MIN_HEIGHT = 0.1f
 
-@PreviewLightDark
+@Preview
 @Composable
 fun GeneralButtonsPreview() {
     PokedexTheme {
@@ -42,7 +43,7 @@ fun GeneralButtonsPreview() {
     }
 }
 
-@PreviewLightDark
+@Preview
 @Composable
 fun EarthButtonsPreview() {
     PokedexTheme {
@@ -56,7 +57,7 @@ fun EarthButtonsPreview() {
     }
 }
 
-@PreviewLightDark
+@Preview
 @Composable
 fun WaterButtonsPreview() {
     PokedexTheme {
@@ -68,7 +69,7 @@ fun WaterButtonsPreview() {
     }
 }
 
-@PreviewLightDark
+@Preview
 @Composable
 fun AirButtonsPreview() {
     PokedexTheme {
@@ -81,7 +82,7 @@ fun AirButtonsPreview() {
     }
 }
 
-@PreviewLightDark
+@Preview
 @Composable
 fun IconButtonsPreview() {
     PokedexTheme {

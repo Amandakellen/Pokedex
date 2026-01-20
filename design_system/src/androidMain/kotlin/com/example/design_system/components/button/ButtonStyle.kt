@@ -8,14 +8,13 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.example.design_system.theme.PokedexTheme
 
-
 @Stable
 sealed interface ButtonStyle {
     val textColor @Composable get() = PokedexTheme.primaryButtonTextColor
     val textSize  @Composable get() = 22.sp
     val background @Composable get() = PokedexTheme.primaryButton
     val fontWeight: FontWeight
-        @Composable get() = FontWeight.Normal
+        @Composable get() = FontWeight.Companion.Normal
 
 
     object Primary: ButtonStyle{
@@ -41,7 +40,7 @@ sealed interface ButtonStyle {
             @Composable
             get() = PokedexTheme.secondaryButton
         override val fontWeight: FontWeight
-            @Composable get() = FontWeight.Bold
+            @Composable get() = FontWeight.Companion.Bold
     }
 
 
