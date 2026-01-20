@@ -10,7 +10,6 @@ import com.example.design_system.theme.colors.bugButtonDark
 import com.example.design_system.theme.colors.customColor1Dark
 import com.example.design_system.theme.colors.darkButtonDark
 import com.example.design_system.theme.colors.disableDark
-import com.example.design_system.theme.colors.disableLight
 import com.example.design_system.theme.colors.dragonButtonDark
 import com.example.design_system.theme.colors.eletricButtonDark
 import com.example.design_system.theme.colors.fairyButtonDark

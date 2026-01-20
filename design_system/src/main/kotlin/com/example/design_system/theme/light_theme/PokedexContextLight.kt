@@ -1,7 +1,6 @@
 package com.example.design_system.theme.light_theme
 
 import androidx.compose.runtime.Immutable
-import androidx.compose.ui.graphics.Color
 import com.example.design_system.data.Padding
 import com.example.design_system.data.Size
 import com.example.design_system.data.Width
