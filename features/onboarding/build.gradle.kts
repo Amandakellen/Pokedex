@@ -1,62 +1,73 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
 }
 
 android {
     namespace = "com.example.features.onboarding"
     compileSdk = 35
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
-    buildFeatures {
-        compose = true
-    }
 }
 
-dependencies {
+kotlin {
+    androidTarget {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+        }
+    }
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.ui.tooling.preview.android)
-    implementation(projects.designSystem)
-    implementation(libs.foundation.android)
-    implementation(libs.androidx.material3.android)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 
-    // Koin
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
-    implementation(libs.koin.androidx.compose.v350)
+    sourceSets {
+        androidMain.dependencies {
+            implementation(libs.androidx.core.ktx)
+            implementation(libs.androidx.appcompat)
+            implementation(libs.material)
+            implementation(libs.androidx.ui.tooling.preview.android)
+            implementation(projects.designSystem)
+            implementation(libs.foundation.android)
+            implementation(libs.androidx.material3.android)
 
-    //Navigation
-    implementation(libs.androidx.navigation.compose.v260)
+            // Koin
+            implementation(libs.koin.core)
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose.v350)
 
-    //compose
-    implementation(libs.androidx.foundation)
+            //Navigation
+            implementation(libs.androidx.navigation.compose.v260)
+
+            //compose
+            implementation(libs.androidx.foundation)
+        }
+
+        commonMain.dependencies {
+            implementation(libs.koin.core)
+            implementation(libs.kotlinx.coroutines.core)
+        }
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+
+            }
+        }
+
+        androidUnitTest.dependencies {
+            implementation("org.jetbrains.kotlin:kotlin-test")
+
+        }
+
+        iosTest.dependencies {
+            implementation("org.jetbrains.kotlin:kotlin-test")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+        }
+    }
 }
