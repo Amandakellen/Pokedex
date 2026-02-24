@@ -15,10 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.example.design_system.R
 import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun ToolBar(
@@ -52,7 +52,7 @@ fun ToolBar(
     }
 }
 
-@PreviewLightDark
+@Preview
 @Composable
 fun ToolBarPreview() {
     PokedexTheme {

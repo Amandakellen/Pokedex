@@ -18,9 +18,9 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.design_system.theme.PokedexTheme
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -86,7 +86,7 @@ fun ContentControl(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun PreviewContentControl() {
     val pagerState = rememberPagerState(0) {
