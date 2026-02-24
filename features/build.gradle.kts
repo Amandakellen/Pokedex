@@ -68,8 +68,3 @@ kotlin {
         }
     }
 }
-
-dependencies {
-    // Compose Debug (for KMP, must be at root level)
-    debugImplementation(compose.preview)
-}
