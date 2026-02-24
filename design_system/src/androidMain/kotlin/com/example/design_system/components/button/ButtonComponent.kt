@@ -1,27 +1,18 @@
 package com.example.design_system.components.button
 
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.design_system.theme.PokedexTheme
 import com.example.design_system.theme.dark_themes.PokedexContextDark
 import com.example.design_system.theme.light_theme.PokedexContextLight
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
-@Preview(name = "General Light Buttons", showBackground = true)
+@Preview
 @Composable
 fun GeneralButtonsLightPreview() {
     PokedexTheme(context = PokedexContextLight) {
@@ -34,7 +25,7 @@ fun GeneralButtonsLightPreview() {
     }
 }
 
-@Preview(name = "Earth Light Buttons", showBackground = true)
+@Preview
 @Composable
 fun EarthButtonsPreview() {
     Column {
@@ -46,7 +37,7 @@ fun EarthButtonsPreview() {
     }
 }
 
-@Preview(name = "Water Light Buttons", showBackground = true)
+@Preview
 @Composable
 fun WaterButtonsLightPreview() {
     Column {
@@ -56,7 +47,7 @@ fun WaterButtonsLightPreview() {
     }
 }
 
-@Preview(name = "Air Light Buttons", showBackground = true)
+@Preview
 @Composable
 fun AirButtonsLightPreview() {
     Column {
@@ -67,7 +58,7 @@ fun AirButtonsLightPreview() {
     }
 }
 
-@Preview(name = "General Dark Buttons", showBackground = true, backgroundColor = 0xFF121212)
+@Preview
 @Composable
 fun GeneralButtonsDarkPreview() {
     PokedexTheme(context = PokedexContextDark) {
@@ -79,7 +70,7 @@ fun GeneralButtonsDarkPreview() {
     }
 }
 
-@Preview(name = "Earth Dark Buttons", showBackground = true, backgroundColor = 0xFF121212)
+@Preview
 @Composable
 fun EarthButtonsDarkPreview() {
     PokedexTheme(context = PokedexContextDark) {
@@ -93,7 +84,7 @@ fun EarthButtonsDarkPreview() {
     }
 }
 
-@Preview(name = "Watter Dark Buttons", showBackground = true, backgroundColor = 0xFF121212)
+@Preview
 @Composable
 fun WaterButtonsDarkPreview() {
     PokedexTheme(context = PokedexContextDark) {
@@ -105,7 +96,7 @@ fun WaterButtonsDarkPreview() {
     }
 }
 
-@Preview(name = "Air Dark Buttons", showBackground = true, backgroundColor = 0xFF121212)
+@Preview
 @Composable
 fun AirButtonsDarkPreview() {
     PokedexTheme(context = PokedexContextDark) {

@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.design_system.theme.PokedexTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,6 +38,7 @@ import androidx.compose.runtime.LaunchedEffect
 import com.example.onboarding.presentation.action.OnboardingAction.Action.*
 import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.effect.OnboardingEffect.*
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun OnboardingHomeScreen(
@@ -121,7 +121,7 @@ fun AnimeImage(imageResId: Int) {
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun OnboardingHomeScreenPreview() {
     val navController = rememberNavController()
