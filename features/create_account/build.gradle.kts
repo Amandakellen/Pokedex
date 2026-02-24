@@ -53,7 +53,7 @@ kotlin {
                 implementation(libs.koin.android)
                 implementation(libs.koin.androidx.compose.v350)
                 
-                // Firebase
+                // Firebase (version specified in libs.versions.toml)
                 implementation(libs.firebase.auth)
             }
         }
@@ -71,12 +71,4 @@ kotlin {
             }
         }
     }
-}
-
-dependencies {
-    // Firebase BOM (for KMP, must be at root level)
-    implementation(platform(libs.firebase.bom))
-    
-    // Compose Debug (for KMP, must be at root level)
-    debugImplementation(compose.preview)
 }
