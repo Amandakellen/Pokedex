@@ -36,6 +36,12 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
                 implementation(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
             }
@@ -43,18 +49,12 @@ kotlin {
         
         val androidMain by getting {
             dependencies {
-                // Android Core
                 implementation(libs.androidx.core.ktx)
-                implementation(libs.androidx.appcompat)
-                implementation(libs.material)
-                
-                // Compose Android-specific
+
                 implementation(libs.androidx.ui.text.google.fonts)
-                
-                // Koin Android
+
                 implementation(libs.koin.androidx.compose.v350)
-                
-                // Kotlin Reflect
+
                 implementation(libs.kotlin.reflect)
             }
         }
