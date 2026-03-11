@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,34 +19,33 @@ import com.example.design_system.theme.PokedexTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ToolBar(
-    modifier: Modifier = Modifier,
-    title: String,
-    onBackPressed: () -> Unit
-) {
+fun ToolBar(modifier: Modifier =  Modifier, title: String, onBackPressed:()-> Unit) {
     Box(
-        modifier = modifier
-            .background(PokedexTheme.background)
-            .statusBarsPadding()
-            .fillMaxWidth()
-    ) {
-        Icon(
-            painter = painterResource(id = R.drawable.arrow_black),
-            contentDescription = "Back",
-            tint = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier
-                .align(Alignment.CenterStart)
-                .padding(PokedexTheme.padding.medium)
-                .clickable(onClick = onBackPressed)
-        )
+        modifier = modifier.background(PokedexTheme.background),
+    ){
+        Row(modifier = Modifier) {
+            Box(
+                modifier = Modifier
+                    .padding(PokedexTheme.padding.medium)
+                    .clickable(onClick = onBackPressed)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.arrow_black),
+                    contentDescription = "Back",
+                    tint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
+                )
+            }
 
-        Text(
-            text = title,
-            style = AppTypography.titleSmall,
-            textAlign = TextAlign.Center,
-            color = PokedexTheme.text,
-            modifier = Modifier.align(Alignment.Center)
-        )
+            Text(
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
+                    .fillMaxWidth(),
+                text = title,
+                style = AppTypography().headlineSmall,
+                textAlign = TextAlign.Center,
+                color = PokedexTheme.text
+            )
+        }
     }
 }
 

@@ -122,7 +122,7 @@ fun OnboardingContent(modifier: Modifier = Modifier) {
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.small),
             text = stringResource(R.string.onboarding_screen_title),
-            style = AppTypography.headlineMedium,
+            style = AppTypography().headlineMedium,
             textAlign = TextAlign.Center,
             color = PokedexTheme.text
         )
@@ -132,7 +132,7 @@ fun OnboardingContent(modifier: Modifier = Modifier) {
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.small),
             text = stringResource(R.string.onboarding_screen_subtitle),
-            style = AppTypography.bodyLarge,
+            style = AppTypography().bodyLarge,
             textAlign = TextAlign.Center,
             color = PokedexTheme.text
         )
