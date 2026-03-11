@@ -151,7 +151,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
             text = if (page == 0) {
                 stringResource(R.string.informative_fisrt_screen_title)
             } else stringResource(R.string.informative_second_screen_title),
-            style = AppTypography.headlineMedium,
+            style = AppTypography().headlineMedium,
             textAlign = TextAlign.Center,
             color = PokedexTheme.text
         )
@@ -163,7 +163,7 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
             text = if (page == 0) {
                 stringResource(R.string.informative_fisrt_screen_subtitle)
             } else stringResource(R.string.informative_second_screen_subtitle),
-            style = AppTypography.bodyLarge,
+            style = AppTypography().bodyLarge,
             textAlign = TextAlign.Center,
             color = PokedexTheme.text
         )

@@ -41,7 +41,7 @@ fun ToolBar(modifier: Modifier =  Modifier, title: String, onBackPressed:()-> Un
                     .align(Alignment.CenterVertically)
                     .fillMaxWidth(),
                 text = title,
-                style = AppTypography.headlineSmall,
+                style = AppTypography().headlineSmall,
                 textAlign = TextAlign.Center,
                 color = PokedexTheme.text
             )

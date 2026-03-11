@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="create_account">
+    <output-path>$PROJECT_DIR$/features/create_account/build/libs</output-path>
+    <root id="archive" name="create_account.jar">
+      <element id="module-output" name="Pokedex.features.create_account.androidMain" />
+    </root>
+  </artifact>
+</component>
