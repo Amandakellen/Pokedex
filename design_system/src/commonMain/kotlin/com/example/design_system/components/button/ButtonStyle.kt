@@ -44,7 +44,7 @@ sealed interface ButtonStyle {
     }
 
 
-    object Watter: ButtonStyle{
+    object Water: ButtonStyle{
         override val textColor: Color
             @Composable
             get() = PokedexTheme.whiteText

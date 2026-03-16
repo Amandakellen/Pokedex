@@ -41,7 +41,7 @@ fun EarthButtonsPreview() {
 @Composable
 fun WaterButtonsLightPreview() {
     Column {
-        ButtonComponent(label = "Water", style = ButtonStyle.Watter, onClick = {})
+        ButtonComponent(label = "Water", style = ButtonStyle.Water, onClick = {})
         ButtonComponent(label = "Ice", style = ButtonStyle.Ice, onClick = {})
         ButtonComponent(label = "Bug", style = ButtonStyle.Bug, onClick = {})
     }
@@ -89,7 +89,7 @@ fun EarthButtonsDarkPreview() {
 fun WaterButtonsDarkPreview() {
     PokedexTheme(context = PokedexContextDark) {
         Column {
-            ButtonComponent(label = "Water", style = ButtonStyle.Watter, onClick = {})
+            ButtonComponent(label = "Water", style = ButtonStyle.Water, onClick = {})
             ButtonComponent(label = "Ice", style = ButtonStyle.Ice, onClick = {})
             ButtonComponent(label = "Bug", style = ButtonStyle.Bug, onClick = {})
         }
