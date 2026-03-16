@@ -5,6 +5,10 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
 }
 
+compose.resources {
+    publicResClass = true
+}
+
 kotlin {
     androidLibrary {
         namespace = "com.example.design_system"
