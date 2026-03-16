@@ -11,12 +11,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import org.jetbrains.compose.resources.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import com.example.design_system.R
 import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import pokedex.design_system.generated.resources.Res
+import pokedex.design_system.generated.resources.arrow_black
 
 @Composable
 fun ToolBar(modifier: Modifier =  Modifier, title: String, onBackPressed:()-> Unit) {
@@ -30,7 +32,7 @@ fun ToolBar(modifier: Modifier =  Modifier, title: String, onBackPressed:()-> Un
                     .clickable(onClick = onBackPressed)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.arrow_black),
+                    painter = painterResource(Res.drawable.arrow_black),
                     contentDescription = "Back",
                     tint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
                 )
