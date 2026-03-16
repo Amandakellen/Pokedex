@@ -16,7 +16,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 fun GeneralButtonsLightPreview() {
     PokedexTheme(context = PokedexContextLight) {
-        Column{
+        Column {
             ButtonComponent(label = "Primary", style = ButtonStyle.Primary, onClick = {})
             ButtonComponent(label = "Secondary", style = ButtonStyle.Secondary, onClick = {})
             ButtonComponent(label = "AllTypes", style = ButtonStyle.AllTypes, onClick = {})
@@ -122,19 +122,18 @@ fun ButtonComponent(
         contentColor = style.textColor
     )
 
-
-        Button(
-            modifier = modifier
-                .fillMaxWidth(),
-            onClick = onClick,
-            shape = RoundedCornerShape(PokedexTheme.padding.superLarge),
-            colors = buttonColors
-        ) {
-            Text(
-                text = label,
-                style = TextStyle(fontSize = style.textSize),
-                fontWeight = style.fontWeight,
-            )
-        }
+    Button(
+        modifier = modifier
+            .fillMaxWidth(),
+        onClick = onClick,
+        shape = RoundedCornerShape(PokedexTheme.padding.superLarge),
+        colors = buttonColors
+    ) {
+        Text(
+            text = label,
+            style = TextStyle(fontSize = style.textSize),
+            fontWeight = style.fontWeight,
+        )
+    }
 
 }
