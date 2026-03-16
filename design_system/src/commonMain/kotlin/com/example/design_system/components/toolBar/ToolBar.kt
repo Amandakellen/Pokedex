@@ -7,13 +7,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import com.example.design_system.R
 import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -34,7 +34,7 @@ fun ToolBar(modifier: Modifier =  Modifier, title: String, onBackPressed:()-> Un
                 Icon(
                     painter = painterResource(Res.drawable.arrow_black),
                     contentDescription = "Back",
-                    tint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
+                    tint = MaterialTheme.colorScheme.onSurface,
                 )
             }
 
