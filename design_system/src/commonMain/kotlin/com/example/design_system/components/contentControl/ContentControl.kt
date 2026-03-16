@@ -1,4 +1,4 @@
-package com.example.design_system.components.contentcontrol
+package com.example.design_system.components.contentControl
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
