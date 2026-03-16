@@ -23,7 +23,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.design_system.components.button.ButtonComponent
 import com.example.design_system.components.button.ButtonStyle
-import com.example.design_system.components.contentcontrol.ContentControl
+import com.example.design_system.components.contentControl.ContentControl
 import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
