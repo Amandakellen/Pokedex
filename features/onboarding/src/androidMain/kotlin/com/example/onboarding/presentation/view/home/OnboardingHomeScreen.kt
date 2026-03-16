@@ -24,11 +24,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.res.painterResource
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.design_system.R.drawable.*
+import pokedex.design_system.generated.resources.Res
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
@@ -36,6 +37,7 @@ import androidx.compose.runtime.LaunchedEffect
 import com.example.onboarding.presentation.action.OnboardingAction.Action.*
 import com.example.onboarding.presentation.effect.OnboardingEffect.*
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import pokedex.design_system.generated.resources.ic_pokedex_name
 
 @Composable
 fun OnboardingHomeScreen(
@@ -69,13 +71,13 @@ fun OnboardingHomeScreen(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        AnimeImage(ic_pokedex_name)
+        AnimeImage(Res.drawable.ic_pokedex_name)
     }
 }
 
 
 @Composable
-fun AnimeImage(imageResId: Int) {
+fun AnimeImage(resource: DrawableResource) {
     var scale by remember { mutableStateOf(1f) }
     var shouldAnimate by remember { mutableStateOf(true) }
 
@@ -109,7 +111,7 @@ fun AnimeImage(imageResId: Int) {
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(id = imageResId),
+            painter = painterResource(resource),
             contentDescription = null,
             modifier = Modifier
                 .size(200.dp)
