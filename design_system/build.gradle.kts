@@ -10,6 +10,10 @@ compose.resources {
 }
 
 kotlin {
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
     androidLibrary {
         namespace = "com.example.design_system"
         compileSdk = 35
@@ -43,25 +47,25 @@ kotlin {
                 implementation(compose.ui)
                 implementation(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                implementation(compose.components.resources)
-                implementation(compose.components.uiToolingPreview)
             }
         }
         
         val androidMain by getting {
             dependencies {
                 implementation(libs.androidx.core.ktx)
-
                 implementation(libs.androidx.ui.text.google.fonts)
-
                 implementation(libs.koin.androidx.compose.v350)
-
                 implementation(libs.kotlin.reflect)
             }
         }
+
+        val iosMain by creating {
+            dependsOn(commonMain)
+        }
+
+        val iosX64Main by getting { dependsOn(iosMain) }
+        val iosArm64Main by getting { dependsOn(iosMain) }
+        val iosSimulatorArm64Main by getting { dependsOn(iosMain) }
         
         val commonTest by getting {
             dependencies {
