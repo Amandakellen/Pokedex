@@ -27,18 +27,16 @@ import com.example.design_system.components.contentControl.ContentControl
 import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
+import com.example.onboarding.presentation.FIRST_STEP
+import com.example.onboarding.presentation.MAX_WIDTH
+import com.example.onboarding.presentation.MIN_HEIGHT
+import com.example.onboarding.presentation.MIN_WIDTH
 import com.example.onboarding.presentation.action.OnboardingAction
 import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
-
-const val PAGER_SIZE = 2
-const val FIRST_STEP = 0
-private const val MIN_WIDTH = 0.7f
-private const val MAX_WIDTH = 0.90f
-private const val MIN_HEIGHT = 0.1f
 
 @Composable
 fun OnboardingInformativeScreen(
