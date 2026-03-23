@@ -6,6 +6,10 @@ plugins {
 }
 
 kotlin {
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
     androidLibrary {
         namespace = "com.example.features.onboarding"
         compileSdk = 35
@@ -59,13 +63,27 @@ kotlin {
                 implementation(libs.koin.androidx.compose.v350)
             }
         }
-        
+
+        val iosMain by creating {
+            dependsOn(commonMain)
+        }
+
+        val iosX64Main by getting {
+            dependsOn(iosMain)
+        }
+        val iosArm64Main by getting {
+            dependsOn(iosMain)
+        }
+        val iosSimulatorArm64Main by getting {
+            dependsOn(iosMain)
+        }
+
         val commonTest by getting {
             dependencies {
                 implementation(libs.junit)
             }
         }
-        
+
         val androidDeviceTest by getting {
             dependencies {
                 implementation(libs.androidx.junit)
