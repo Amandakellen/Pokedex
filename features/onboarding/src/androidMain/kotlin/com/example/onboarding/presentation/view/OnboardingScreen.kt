@@ -1,6 +1,5 @@
 package com.example.onboarding.presentation.view
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,7 +25,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.design_system.components.button.ButtonComponent
 import com.example.design_system.components.button.ButtonStyle
-import com.example.design_system.components.button.buttonSize
 import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
 import com.example.features.onboarding.R
@@ -81,7 +79,7 @@ fun OnboardingScreen(
                     .weight(2f)
                     .padding(PokedexTheme.padding.medium))
                 ButtonComponent(
-                    modifier = Modifier.buttonSize(),
+                    modifier = modifier,
                     label =
                         stringResource(R.string.onboarding_screen_login_button),
                     style = ButtonStyle.Primary,
@@ -91,11 +89,10 @@ fun OnboardingScreen(
                 )
 
                 ButtonComponent(
-                    modifier = Modifier.buttonSize(),
+                    modifier = modifier,
                     label =
                         stringResource(R.string.onboarding_screen_create_account_button),
                     style = ButtonStyle.Secondary,
-                    border = BorderStroke(PokedexTheme.width.tiny, PokedexTheme.strokeColor),
                     onClick = {
                         sendAction(ClickCreateAccountButton)
                     }
@@ -145,8 +142,8 @@ fun checkEffect(effect: OnboardingEffect, navController: NavController) {
         //navController.navigate("create_account_home")
     }else
         if (effect is OnboardingEffect.GoToCreateAccount) {
-        navController.navigate("createAccountHome")
-    }
+            navController.navigate("createAccountHome")
+        }
 }
 
 

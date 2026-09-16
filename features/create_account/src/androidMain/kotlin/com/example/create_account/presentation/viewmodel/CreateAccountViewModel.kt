@@ -2,8 +2,7 @@ package com.example.create_account.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.create_account.domain.data.CreateAccountByEmailData
-import com.example.create_account.domain.usecase.CreateAccountByEmailUseCase
+import com.example.create_account.domain.repository.CreateAccountRepository
 import com.example.create_account.presentation.action.CreateAccountAction
 import com.example.create_account.presentation.effect.CreateAccountEffect
 import com.example.create_account.presentation.effect.CreateAccountEffect.*
@@ -12,8 +11,7 @@ import com.example.create_account.presentation.state.CreateAccountState.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class CreateAccountViewModel(private val createAccountByEmailUseCase: CreateAccountByEmailUseCase) :
-    ViewModel(),
+class CreateAccountViewModel(private val repository: CreateAccountRepository) : ViewModel(),
     CreateAccountAction {
 
     private val _state = MutableStateFlow<CreateAccountState>(Resume)
@@ -46,26 +44,20 @@ class CreateAccountViewModel(private val createAccountByEmailUseCase: CreateAcco
 
             4 -> {
                 _state.value = Loading
-                createAccountByEmail(email = email, name = name, password = password)
+                register(email = email, name =  name, password = password)
             }
         }
     }
 
-    fun createAccountByEmail(email: String, password: String, name: String) {
+
+    fun register(email: String, password: String, name: String) {
         viewModelScope.launch {
-            try {
-                createAccountByEmailUseCase.invoke(
-                    CreateAccountByEmailData(
-                        email = email,
-                        password = password,
-                        name = name
-                    )
-                )
+            val result = repository.registerWithEmail(email, password)
+            if (!result.isSuccess) {
+                _state.value = Error
+            } else{
                 _state.value = Success
                 _effect.value = GoToRegisterSuccess
-            } catch (e: Exception) {
-                _state.value = Error
-                return@launch
             }
         }
     }
