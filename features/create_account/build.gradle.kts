@@ -35,33 +35,33 @@ kotlin {
             dependencies {
                 // Koin Core (multiplatform)
                 implementation(libs.koin.core)
-                
+
                 // Compose Multiplatform (common code)
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)
                 implementation(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
-                
+
                 // Navigation Multiplatform
                 implementation(libs.androidx.navigation.compose.multiplatform)
-                
+
                 // Project modules
                 implementation(project(":design_system"))
             }
         }
-        
+
         val androidMain by getting {
             dependencies {
                 // Android Core
                 implementation(libs.androidx.core.ktx)
                 implementation(libs.androidx.appcompat)
                 implementation(libs.material)
-                
+
                 // Koin Android
                 implementation(libs.koin.android)
                 implementation(libs.koin.androidx.compose.v350)
-                
+
                 // Firebase (version specified in libs.versions.toml)
                 implementation(libs.firebase.auth)
             }
