@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="features">
+    <output-path>$PROJECT_DIR$/features/build/libs</output-path>
+    <root id="archive" name="features.jar">
+      <element id="module-output" name="Pokedex.features.androidMain" />
+    </root>
+  </artifact>
+</component>
