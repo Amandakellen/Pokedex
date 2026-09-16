@@ -6,16 +6,25 @@ plugins {
 }
 
 kotlin {
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
     androidLibrary {
         namespace = "com.example.features.create_account"
         compileSdk = 35
         minSdk = 24
-        
+
+        // Enable Android resources
+        androidResources {
+            enable = true
+        }
+
         // Enable device tests
         withDeviceTest {
             instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
-        
+
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget("11"))
         }
@@ -57,13 +66,27 @@ kotlin {
                 implementation(libs.firebase.auth)
             }
         }
-        
+
+        val iosMain by creating {
+            dependsOn(commonMain)
+        }
+
+        val iosX64Main by getting {
+            dependsOn(iosMain)
+        }
+        val iosArm64Main by getting {
+            dependsOn(iosMain)
+        }
+        val iosSimulatorArm64Main by getting {
+            dependsOn(iosMain)
+        }
+
         val commonTest by getting {
             dependencies {
                 implementation(libs.junit)
             }
         }
-        
+
         val androidDeviceTest by getting {
             dependencies {
                 implementation(libs.androidx.junit)
