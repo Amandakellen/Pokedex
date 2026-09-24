@@ -1,6 +1,6 @@
 package com.example.create_account.domain.usecase
 
-import com.example.coroutines.usecase.UseCase
+import com.example.domain.usecase.UseCase
 import com.example.create_account.domain.data.CreateAccountByEmailData
 import com.example.create_account.domain.repository.CreateAccountRepository
 import android.util.Patterns

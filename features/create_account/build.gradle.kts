@@ -48,6 +48,7 @@ kotlin {
 
                 // Project modules
                 implementation(project(":design_system"))
+                implementation(project(":infrastructure"))
             }
         }
 
