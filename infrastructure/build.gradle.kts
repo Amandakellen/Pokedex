@@ -63,6 +63,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+                implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.kotlin.stdlib)
                 implementation(libs.ktor.client.core)
             }
