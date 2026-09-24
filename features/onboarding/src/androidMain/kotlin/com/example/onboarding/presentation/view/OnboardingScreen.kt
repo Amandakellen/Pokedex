@@ -17,8 +17,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -27,12 +27,17 @@ import com.example.design_system.components.button.ButtonComponent
 import com.example.design_system.components.button.ButtonStyle
 import com.example.design_system.theme.AppTypography
 import com.example.design_system.theme.PokedexTheme
-import com.example.features.onboarding.R
 import com.example.onboarding.presentation.action.OnboardingAction.Action.*
 import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
+import pokedex.features.onboarding.generated.resources.Res
+import pokedex.features.onboarding.generated.resources.boy_and_girl
+import pokedex.features.onboarding.generated.resources.onboarding_screen_create_account_button
+import pokedex.features.onboarding.generated.resources.onboarding_screen_login_button
+import pokedex.features.onboarding.generated.resources.onboarding_screen_subtitle
+import pokedex.features.onboarding.generated.resources.onboarding_screen_title
 
 private const val MIN_WIDTH = 0.7f
 private const val MAX_WIDTH = 0.90f
@@ -81,7 +86,7 @@ fun OnboardingScreen(
                 ButtonComponent(
                     modifier = modifier,
                     label =
-                        stringResource(R.string.onboarding_screen_login_button),
+                        stringResource(Res.string.onboarding_screen_login_button),
                     style = ButtonStyle.Primary,
                     onClick = {
                         sendAction(ClickLoginButton)
@@ -91,7 +96,7 @@ fun OnboardingScreen(
                 ButtonComponent(
                     modifier = modifier,
                     label =
-                        stringResource(R.string.onboarding_screen_create_account_button),
+                        stringResource(Res.string.onboarding_screen_create_account_button),
                     style = ButtonStyle.Secondary,
                     onClick = {
                         sendAction(ClickCreateAccountButton)
@@ -110,7 +115,7 @@ fun OnboardingContent(modifier: Modifier = Modifier) {
                 .align(Alignment.CenterHorizontally)
                 .weight(3f)
                 .fillMaxWidth(),
-            painter = painterResource(id = R.drawable.boy_and_girl),
+            painter = painterResource(Res.drawable.boy_and_girl),
             contentDescription = null
         )
 
@@ -118,7 +123,7 @@ fun OnboardingContent(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.small),
-            text = stringResource(R.string.onboarding_screen_title),
+            text = stringResource(Res.string.onboarding_screen_title),
             style = AppTypography().headlineMedium,
             textAlign = TextAlign.Center,
             color = PokedexTheme.text
@@ -128,7 +133,7 @@ fun OnboardingContent(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.small),
-            text = stringResource(R.string.onboarding_screen_subtitle),
+            text = stringResource(Res.string.onboarding_screen_subtitle),
             style = AppTypography().bodyLarge,
             textAlign = TextAlign.Center,
             color = PokedexTheme.text

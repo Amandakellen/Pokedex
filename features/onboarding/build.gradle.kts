@@ -45,6 +45,9 @@ kotlin {
                 
                 // Navigation Multiplatform
                 implementation(libs.androidx.navigation.compose.multiplatform)
+
+                //Resources
+                implementation(compose.components.resources)
                 
                 // Project modules
                 implementation(project(":design_system"))

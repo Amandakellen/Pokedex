@@ -7,8 +7,8 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import androidx.compose.material3.Text
 import androidx.compose.foundation.Image
 import androidx.compose.material3.Scaffold
@@ -35,8 +35,18 @@ import com.example.onboarding.presentation.action.OnboardingAction
 import com.example.onboarding.presentation.effect.OnboardingEffect
 import com.example.onboarding.presentation.viewModel.OnboardingViewModel
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
+import pokedex.features.onboarding.generated.resources.Res
+import pokedex.features.onboarding.generated.resources.girl
+import pokedex.features.onboarding.generated.resources.ic_professor_and_trainer
+import pokedex.features.onboarding.generated.resources.informative_fisrt_screen_continue_button
+import pokedex.features.onboarding.generated.resources.informative_fisrt_screen_subtitle
+import pokedex.features.onboarding.generated.resources.informative_fisrt_screen_title
+import pokedex.features.onboarding.generated.resources.informative_second_screen_continue_button
+import pokedex.features.onboarding.generated.resources.informative_second_screen_subtitle
+import pokedex.features.onboarding.generated.resources.informative_second_screen_title
 
 @Composable
 fun OnboardingInformativeScreen(
@@ -47,7 +57,7 @@ fun OnboardingInformativeScreen(
     val effect = viewModel.effect.collectAsState()
     val sendAction = viewModel::sendAction
 
-    val images = listOf(R.drawable.ic_professor_and_trainer, R.drawable.girl)
+    val images = listOf(Res.drawable.ic_professor_and_trainer, Res.drawable.girl)
     val pagerState =
         rememberPagerState(initialPage = state.uiModel.currentStep, pageCount = { images.size })
     val coroutineScope = rememberCoroutineScope()
@@ -108,9 +118,9 @@ fun OnboardingInformativeScreen(
                             horizontal = PokedexTheme.padding.superSmall
                         ),
                     label = if (pagerState.currentPage == FIRST_STEP) {
-                        stringResource(R.string.informative_fisrt_screen_continue_button)
+                        stringResource(Res.string.informative_fisrt_screen_continue_button)
                     } else {
-                        stringResource(R.string.informative_second_screen_continue_button)
+                        stringResource(Res.string.informative_second_screen_continue_button)
                     },
                     style = ButtonStyle.Primary,
                     onClick = {
@@ -129,14 +139,14 @@ fun OnboardingInformativeScreen(
 }
 
 @Composable
-fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
+fun OnboardingInformativeStepScreen(imageRes: DrawableResource, page: Int) {
     Column {
         Spacer(modifier = Modifier.height(PokedexTheme.padding.superLarge))
         Image(
             modifier = Modifier
                 .weight(3f)
                 .fillMaxWidth(),
-            painter = painterResource(id = imageRes),
+            painter = painterResource(imageRes),
             contentDescription = null
         )
 
@@ -147,8 +157,8 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.small),
             text = if (page == 0) {
-                stringResource(R.string.informative_fisrt_screen_title)
-            } else stringResource(R.string.informative_second_screen_title),
+                stringResource(Res.string.informative_fisrt_screen_title)
+            } else stringResource(Res.string.informative_second_screen_title),
             style = AppTypography().headlineMedium,
             textAlign = TextAlign.Center,
             color = PokedexTheme.text
@@ -159,8 +169,8 @@ fun OnboardingInformativeStepScreen(@DrawableRes imageRes: Int, page: Int) {
                 .align(Alignment.CenterHorizontally)
                 .padding(PokedexTheme.padding.small),
             text = if (page == 0) {
-                stringResource(R.string.informative_fisrt_screen_subtitle)
-            } else stringResource(R.string.informative_second_screen_subtitle),
+                stringResource(Res.string.informative_fisrt_screen_subtitle)
+            } else stringResource(Res.string.informative_second_screen_subtitle),
             style = AppTypography().bodyLarge,
             textAlign = TextAlign.Center,
             color = PokedexTheme.text
