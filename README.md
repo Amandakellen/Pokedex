@@ -2,6 +2,8 @@
 
 Este é um projeto de **Pokedex** moderno, desenvolvido utilizando uma arquitetura multi-módulos robusta e as tecnologias mais recentes do ecossistema Android e **Kotlin Multiplatform (KMP)**.
 
+Figma[https://www.figma.com/design/U5T1YUs5y0Nm5QRfM3nI0r/Pok%25C3%25A9dex---Pok%25C3%25A9mon-App--Community-?node-id=95-236&p=f&t=jILExzPoCKOGnwUY-0]
+
 ## 🚀 Tecnologias Utilizadas
 
 - **[Kotlin Multiplatform (KMP)](https://kotlinlang.org/docs/multiplatform.html)**: Compartilhamento de código e lógica entre plataformas.
