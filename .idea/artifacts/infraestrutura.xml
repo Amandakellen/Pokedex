@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="infraestrutura">
+    <output-path>$PROJECT_DIR$/infraestrutura/build/libs</output-path>
+    <root id="archive" name="infraestrutura.jar">
+      <element id="module-output" name="Pokedex.infraestrutura.androidMain" />
+    </root>
+  </artifact>
+</component>

@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/create_account" />
             <option value="$PROJECT_DIR$/features/onboarding" />
+            <option value="$PROJECT_DIR$/infrastructure" />
             <option value="$PROJECT_DIR$/shared" />
           </set>
         </option>
