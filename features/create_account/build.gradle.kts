@@ -46,6 +46,9 @@ kotlin {
                 // Navigation Multiplatform
                 implementation(libs.androidx.navigation.compose.multiplatform)
 
+                // Firebase (version specified in libs.versions.toml)
+                implementation(libs.firebase.auth)
+
                 // Project modules
                 implementation(project(":design_system"))
                 implementation(project(":infrastructure"))
